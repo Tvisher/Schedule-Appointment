@@ -18,10 +18,11 @@ const plusCounterDays = 14;
 const todayDate = new Date();
 const finishDate = new Date().setDate(todayDate.getDate() + plusCounterDays);
 const currentDateTextElements = document.querySelectorAll('.wqeqwe');
-
+const sliderSpeed = 1200;
 const datapicker = new AirDatepicker('#my-element', {
     // visible: true,
     // куда выводить данные
+    speed: sliderSpeed,
     altField: '.wqeqwe',
     autoClose: true,
     //Английская локализация
@@ -38,7 +39,7 @@ const datapicker = new AirDatepicker('#my-element', {
 
         const activeSlide = [...slider.slides].find(slide => slide.dataset.slideSetDate == formattedDate);
         //Прокрутка к слайду с нужной датой из календаря
-        slider.slideTo(activeSlide.dataset.slideIndex);
+        slider.slideTo(activeSlide.dataset.slideIndex, sliderSpeed);
         cleanSlideActiveClass(slider.slides, activeSlide);
     }
 });
