@@ -1,0 +1,57 @@
+.btn {
+  font-size: 15px;
+  font-family: "Montserrat";
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 20px;
+  line-height: 120%;
+  cursor: pointer;
+  border-radius: 36px;
+  border: 2px solid transparent;
+  transition:
+    color .3s ease,
+    background-color .3s ease,
+    transform .3s ease,
+    border-color .3s ease;
+    &:hover {
+      border-color:$brand-black;
+      background-color: $brand-black;
+      color: #fff;
+    }
+    &:active {
+      transform: translateY(2px);
+    }
+    &.wide {
+      padding: 8px 28px;
+    }
+    &.wery-wide {
+      padding: 8px 43px;
+
+    }
+}
+
+.blueBtn {
+  background-color:$brand-blue;
+  color: #fff;
+}
+.ghostBtn {
+  background-color:transparent;
+  color: #fff;
+  border-color: rgba(217, 227, 232, 0.2);
+}
+
+.borderBtn {
+  background-color:transparent;
+  color: #1D1E21;
+  border-color: $mainFontColor;
+  font-weight: 600;
+}
+
+button {
+  cursor: pointer;
+  border:none;
+  background-color: transparent;
+}
+

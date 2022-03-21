@@ -1,0 +1,175 @@
+// тк мы к ним обращаемся везде ниже
+@import "fonts.scss";
+@import "utils/reset";
+@import "utils/vars";
+@import "vendors/vendors";
+
+
+.unselectable {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.select {
+  color: $mainFontColor;
+}
+.select-wrapper {
+  margin-right: 25px;
+  select  {
+    cursor: pointer;
+  -webkit-appearance : none;
+  }
+  position:relative;
+  &:before {
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 7px;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='12' height='7' viewBox='0 0 12 7' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L6 4.58579L10.2929 0.292893C10.6834 -0.0976311 11.3166 -0.0976311 11.7071 0.292893C12.0976 0.683417 12.0976 1.31658 11.7071 1.70711L6.70711 6.70711C6.31658 7.09763 5.68342 7.09763 5.29289 6.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z' fill='black'/%3e%3c/svg%3e ");
+    background-position: right center;
+    background-repeat  : no-repeat;
+  }
+}
+
+.underlined-link {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: 0.3s ease-in-out !important;
+  /*add those for opera and mozilla support*/
+  -webkit-text-decoration-color: transparent;
+  -moz-text-decoration-color: transparent;
+ }
+ .underlined-link:hover{
+  text-decoration-color: $brand-blue;
+  /*add those for opera and mozilla support*/
+  -webkit-text-decoration-color: $brand-blue;
+  -moz-text-decoration-color: $brand-blue;
+ }
+
+html {
+  scroll-behavior: smooth;
+  line-height: $mainLineHeight;
+  font-size: $mainFontSize;
+  color: $mainFontColor;
+  height: 100%;
+
+  @media screen and (max-width: $desktopWidth) {
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: $tableWidth) {
+    font-size: 15px;
+  }
+
+  @media screen and (max-width: $phoneWidth) {
+    font-size: 14px;
+  }
+}
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: $mainFont ;
+  font-size: $mainFontSize;
+  font-weight: $mainFontWeight;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  &.hidden {
+    overflow: hidden;
+
+  }
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul,
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+// *::selection {
+//   background: #4E5D78;
+//   color: #fff;
+// }
+
+
+section {
+  overflow: hidden;
+  padding: 30px 0;
+}
+.section__title {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: 35px;
+  &.articles-title {
+    padding-right: 110px;
+  }
+}
+
+.container {
+  width: 100%;
+  flex: 0 0 auto;
+  position: relative;
+  max-width: $desktopWidth;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @media screen and (max-width: $smDesktopWidth) {
+    // max-width: $tableWidth;
+  }
+
+  @media screen and (max-width: $tableWidth) {
+    max-width: 98%;
+  }
+
+  @media screen and (max-width: $phoneWidth) {
+    max-width: 100%;
+  }
+  @media screen and (max-width: $smPhoneWidth) {
+    padding: 0 10px;
+  }
+  &.small {
+    max-width: 936px
+  }
+}
+
+@import "./common.scss";
+
+
+
+#my-element {
+  height: 50px;
+  width: 200px;
+  margin: auto;
+  border:1px solid red;
+}
+.swiper-slide.active {
+  background:red;
+}
