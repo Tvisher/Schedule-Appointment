@@ -14,12 +14,14 @@ import localeEn from 'air-datepicker/locale/en.js';
 
 
 // Ограничение по дням стекущего дня
-const plusCounterDays = 14;
+
+const dayLimit = +document.querySelector('[ data-day-limit]').dataset.dayLimit;
+
 const todayDate = new Date();
-const finishDate = new Date().setDate(todayDate.getDate() + plusCounterDays);
-const currentDateTextElements = document.querySelectorAll('.wqeqwe');
+const finishDate = new Date().setDate(todayDate.getDate() + dayLimit);
+const currentDateTextElements = document.querySelectorAll('.selected-date');
 const sliderSpeed = 1200;
-const datapicker = new AirDatepicker('#my-element', {
+const datapicker = new AirDatepicker('#widget-datapicker', {
     // visible: true,
     // куда выводить данные
     speed: sliderSpeed,
@@ -56,11 +58,18 @@ datapicker.selectDate(calendarStartDate);
 
 
 const slider = new Swiper('.swiper', {
-    modules: [Manipulation],
+    modules: [Manipulation, Navigation],
     slidesPerView: 8,
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+    spaceBetween: 20,
+    longSwipesRatio: 2,
+    allowTouchMove: false,
     on: {
         init() {
-            for (let index = 0; index < plusCounterDays + 1; index++) {
+            for (let index = 0; index < dayLimit + 1; index++) {
                 let slideDate = new Date().setDate(todayDate.getDate() + index);
                 let slideDataValue = new Date(slideDate).toLocaleString('en', options);
                 const timeGetData = new Date(slideDate).toLocaleString('en', {
