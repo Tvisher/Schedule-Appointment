@@ -1,11 +1,9 @@
-// Font
-$mainFont: "Montserrat";
-$mainFontColor: #000000;
+
 
 // Size
 $mainFontSize: 18px;
 $mainFontWeight: 500;
-$mainLineHeight: 1.55;
+$mainLineHeight: 1.2;
 
 $desktopWidth: 1440px;
 $smDesktopWidth: 980px;
@@ -14,9 +12,13 @@ $phoneWidth: 480px;
 $smPhoneWidth: 380px;
 
 // Main color
-$brand-blue:#0066FF;
-$brand-gray:#848996;
-$brand-black: #1F283F;
+$brand-blue:#2371E4;
+$brand-gray:#4C5563;
+$brand-black: #1F2B3D;
+
+// Font
+$mainFont: "Montserrat";
+$mainFontColor: $brand-black;
 
 // Border Color
 $border-base:1px solid #D9E2E6;

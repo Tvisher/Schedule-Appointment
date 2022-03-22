@@ -6,25 +6,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/main.min.css">
+    <script> </script>
 </head>
 
 <body>
+    <header class="header"></header>
+    <main class="main">
+        <section class="widget-template">
+            <div class="container small">
+                <form action="@" data-day-limit="14" class="widget-template__form">
+                    <div class="widget-template__step">
+                        <div class="widget-template__head">
+                            <div class="wrapper column">
+                                <h3 class="litle-title">Buckhead Primary Care Clinic</h3>
+                                <span class="litle-subtitle">1891 Howell Mill Road NW Suite A Atlanta, GA 30318 </span>
+                            </div>
+                            <div class="head-info"></div>
+                        </div>
+                        <div class="widget-template__body">
+                            <div class="wrapper">
+                                <div class="widget-template__block">
+                                    <div class="wrapper column">
+                                        <h2 class="large-title">Select a Date and Time</h2>
+                                        <span class="widget-template__nameplate step">1 out of 3</span>
+                                    </div>
+                                    <label class="widget-template__label">
+                                        <span class="widget-template__nameplate">Date</span>
+                                        <input type="text" id="widget-datapicker" name="datapicker-date" value="">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="widget-template__slider-wrapper">
+                                <div class="widget-template__slider-nav">
+                                    <div class="swiper-button-prev">
+                                        <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 1L7 7L1 13" stroke="#BEC4CF" stroke-width="2" />
+                                        </svg>
+                                    </div>
+                                    <div class="swiper-button-next">
+                                        <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M1 1L7 7L1 13" stroke="#BEC4CF" stroke-width="2" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="swiper widget-template__slider">
+                                    <div class="swiper-wrapper">
+                                        <!-- тут происходит отрисовка слайдов в js  -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"></footer>
     <div class="container">
-        <div class="wrapper" data-day-limit="14">
-            <input type="text" id="widget-datapicker">
+        <div class="wrapper">
             <div class="selected-date-wrapper">
                 Выводим выбранный день:
                 <span class="selected-date"></span>
             </div>
-            <!-- Slider main container -->
-            <div class="swiper">
-                <div class="swiper-wrapper">
-                </div>
-                <!-- If we need navigation buttons -->
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-            </div>
+
         </div>
     </div>
     <script src="./js/app.min.js"></script>
