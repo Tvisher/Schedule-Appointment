@@ -244,22 +244,20 @@ section {
 }
 
 .widget-template__slider {
-  // &.blur {
-  //   &:before {
-  //     animation: whiteShadow 1.5s ease infinite 0s;
-  //     z-index: 2;
-  //   }
-  // }
-  // position: relative;
-  // &:before {
-  //   position: absolute;
-  //   content: '';
-  //   width: 100%;
-  //   height: 100%;
-  //   left: 0;
-  //   top: 0;
-  //   background-color: #fff;
-  // }
+  &.blur {
+    &:before {
+      z-index: 2;
+    }
+  }
+  position: relative;
+  &:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
   .swiper-wrapper {
     transition-timing-function: ease-in-out;
   }
@@ -267,7 +265,7 @@ section {
   width: 100%;
   margin: 0;
   .swiper-slide {
-    will-change: transform;
+    will-change: auto;
     cursor: pointer;
     border-radius: 4px;
     padding: 13px 17px 8px;

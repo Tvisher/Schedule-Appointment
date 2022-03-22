@@ -2042,9 +2042,23 @@ button {
 }
 
 .widget-template__slider {
+  position: relative;
   max-width: 756px;
   width: 100%;
   margin: 0;
+}
+
+.widget-template__slider.blur:before {
+  z-index: 2;
+}
+
+.widget-template__slider:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
 }
 
 .widget-template__slider .swiper-wrapper {
@@ -2052,7 +2066,7 @@ button {
 }
 
 .widget-template__slider .swiper-slide {
-  will-change: transform;
+  will-change: auto;
   cursor: pointer;
   border-radius: 4px;
   padding: 13px 17px 8px;

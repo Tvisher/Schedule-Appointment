@@ -12,6 +12,7 @@ import AirDatepicker from 'air-datepicker';
 import localeEn from 'air-datepicker/locale/en.js';
 
 
+const widgetTemplateSlider = document.querySelector('.widget-template__slider');
 
 // Ограничение по дням с текущего дня
 const dayLimit = +document.querySelector('[ data-day-limit]').dataset.dayLimit;
@@ -66,11 +67,11 @@ const calendarStartDate = datapicker.viewDate.toLocaleString('en', options);
 datapicker.selectDate(calendarStartDate);
 
 // описываем компонент слайдера
-const slider = new Swiper('.swiper', {
+const slider = new Swiper('.widget-template__slider', {
     modules: [Manipulation, Navigation],
     // slidesPerView: 8,
     slidesPerView: "auto",
-    slidesPerGroup: 3,
+    // slidesPerGroup: 3,
     spaceBetween: 6,
     allowTouchMove: false,
     observeParents: true,
@@ -117,8 +118,17 @@ const slider = new Swiper('.swiper', {
                 })
             });
         },
+        transitionEnd() {
+            console.log('transitionEnd');
+        },
         slideChangeTransitionEnd() {
             slider.updateSize();
+            widgetTemplateSlider.classList.remove('blur');
+
+        },
+        slideChangeTransitionStart() {
+            slider.updateSize();
+            widgetTemplateSlider.classList.add('blur');
         },
     }
 });
