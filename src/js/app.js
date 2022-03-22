@@ -118,9 +118,6 @@ const slider = new Swiper('.widget-template__slider', {
                 })
             });
         },
-        transitionEnd() {
-            console.log('transitionEnd');
-        },
         slideChangeTransitionEnd() {
             slider.updateSize();
             widgetTemplateSlider.classList.remove('blur');
