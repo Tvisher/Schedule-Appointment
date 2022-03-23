@@ -12,37 +12,78 @@ import AirDatepicker from 'air-datepicker';
 import localeEn from 'air-datepicker/locale/en.js';
 
 
-const widgetTemplateSlider = document.querySelector('.widget-template__slider');
-
+const widgetTemplateParent = document.querySelector('#widget-template');
+const widgetTemplateSlider = widgetTemplateParent.querySelector('.widget-template__slider');
 // Ограничение по дням с текущего дня
-const dayLimit = +document.querySelector('[ data-day-limit]').dataset.dayLimit;
+const dayLimit = +widgetTemplateParent.querySelector('[ data-day-limit]').dataset.dayLimit;
 // получаем сегодняшний день
 const todayDate = new Date();
 // получаем конеечный день учитывая ограничитель
 const finishDate = new Date().setDate(todayDate.getDate() + dayLimit);
 // элементы куда выводить выбранные даты
-const currentDateTextElements = document.querySelectorAll('.selected-date');
+const currentDateTextElements = widgetTemplateParent.querySelectorAll('.selected-date');
+const currentTimeTextElements = widgetTemplateParent.querySelectorAll('.selected-time');
 // настройка скорости слайдера
 const sliderSpeed = 1800;
 // описываем компонент календаря
 const datapicker = new AirDatepicker('#widget-datapicker', {
-    // visible: true,
     // куда выводить данные
     speed: sliderSpeed,
-    altField: '.wqeqwe',
     autoClose: true,
+    // isMobile: true,
+    // inline: true,
+    position: 'bottom right',
     //Английская локализация
     locale: localeEn.default,
     startDate: todayDate,
     minDate: todayDate,
     maxDate: finishDate,
     dateFormat: 'MMM dd, yyyy',
+    altField: '.selected-date',
+    altFieldDateFormat: 'MMM dd',
+    buttons: [
+        {
+            content(dp) {
+                return 'Today';
+            },
+            onClick(dp) {
+                dp.selectDate(todayDate);
+            }
+        }
+    ],
     onSelect({ date, formattedDate, datepicker }) {
         // выводим выбранную дату в элементы под это дело
-        currentDateTextElements.forEach(textBlock => textBlock.textContent = formattedDate);
-        // тут можно разместить запрос на бэк за нужными данными по дате
-        console.log(`Выбранная дата в календаре в нужном формате для вёрстки: ${formattedDate}`);
-        console.log(`Дата в общем формате: ${date}`);
+        currentDateTextElements.forEach(textBlock => textBlock.textContent = datepicker.$altField.value);
+        widgetTemplateParent.querySelector('[data-show-next-step]').classList.remove('show');
+        const renderTimeContainer = widgetTemplateParent.querySelector('[data-render-container]')
+        const timeCellPreloader = widgetTemplateParent.querySelector('[data-preloader]');
+        timeCellPreloader.classList.add('show');
+
+        let renderTimeContainerChildred = renderTimeContainer.innerHTML;
+        renderTimeContainer.innerHTML = '';
+        setTimeout(() => {
+            // запрос на сервак =>
+            // тут можно разместить запрос на бэк за нужными данными по дате
+            console.log(`Выбранная дата в календаре в нужном формате для вёрстки: ${formattedDate}`);
+            console.log(`Дата в общем формате: ${date}`);
+            //конец запроса на сервак =>
+
+            renderTimeContainer.innerHTML = renderTimeContainerChildred;
+            timeCellPreloader.classList.remove('show');
+
+            const sheduleTimeInputs = document.querySelectorAll('[name="shedule-time"]');
+            if (sheduleTimeInputs) {
+                sheduleTimeInputs.forEach(input => {
+                    input.addEventListener('input', (e) => {
+                        widgetTemplateParent.querySelector('[data-show-next-step]').classList.add('show');
+                        const selectedTime = e.target.value;
+                        console.log(`Выбранное время : ${selectedTime}`);
+                        currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = `,&nbsp;${selectedTime}`);
+                    })
+                });
+            }
+        }, 1200);
+
         //получаем соответствующий дате слайд
         const activeSlide = [...slider.slides].find(slide => slide.dataset.slideSetDate == formattedDate);
         //меняем классы у слайдов
@@ -72,7 +113,7 @@ const slider = new Swiper('.widget-template__slider', {
     // slidesPerView: 8,
     slidesPerView: "auto",
     // slidesPerGroup: 3,
-    spaceBetween: 6,
+    spaceBetween: 5,
     allowTouchMove: false,
     observeParents: true,
     navigation: {
