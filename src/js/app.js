@@ -13,7 +13,9 @@ import localeEn from 'air-datepicker/locale/en.js';
 
 
 const widgetTemplateParent = document.querySelector('#widget-template');
-const widgetTemplateSlider = widgetTemplateParent.querySelector('.widget-template__slider');
+
+const widgetTemplateStepOne = widgetTemplateParent.querySelector('[data-step="1"]');
+const widgetTemplateSlider = widgetTemplateStepOne.querySelector('.widget-template__slider');
 // Ограничение по дням с текущего дня
 const dayLimit = +widgetTemplateParent.querySelector('[ data-day-limit]').dataset.dayLimit;
 // получаем сегодняшний день
@@ -26,7 +28,7 @@ const currentTimeTextElements = widgetTemplateParent.querySelectorAll('.selected
 // настройка скорости слайдера
 const sliderSpeed = 1800;
 // описываем компонент календаря
-const datapicker = new AirDatepicker('#widget-datapicker', {
+const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
     // куда выводить данные
     speed: sliderSpeed,
     autoClose: true,
@@ -54,9 +56,9 @@ const datapicker = new AirDatepicker('#widget-datapicker', {
     onSelect({ date, formattedDate, datepicker }) {
         // выводим выбранную дату в элементы под это дело
         currentDateTextElements.forEach(textBlock => textBlock.textContent = datepicker.$altField.value);
-        widgetTemplateParent.querySelector('[data-show-next-step]').classList.remove('show');
-        const renderTimeContainer = widgetTemplateParent.querySelector('[data-render-container]')
-        const timeCellPreloader = widgetTemplateParent.querySelector('[data-preloader]');
+        widgetTemplateStepOne.querySelector('[data-show-next-step]').classList.remove('show');
+        const renderTimeContainer = widgetTemplateStepOne.querySelector('[data-render-container]')
+        const timeCellPreloader = widgetTemplateStepOne.querySelector('[data-preloader]');
         timeCellPreloader.classList.add('show');
 
         let renderTimeContainerChildred = renderTimeContainer.innerHTML;
@@ -71,7 +73,7 @@ const datapicker = new AirDatepicker('#widget-datapicker', {
             renderTimeContainer.innerHTML = renderTimeContainerChildred;
             timeCellPreloader.classList.remove('show');
 
-            const sheduleTimeInputs = document.querySelectorAll('[name="shedule-time"]');
+            const sheduleTimeInputs = widgetTemplateStepOne.querySelectorAll('[name="shedule-time"]');
             if (sheduleTimeInputs) {
                 sheduleTimeInputs.forEach(input => {
                     input.addEventListener('input', (e) => {
@@ -83,7 +85,6 @@ const datapicker = new AirDatepicker('#widget-datapicker', {
                 });
             }
         }, 1200);
-
         //получаем соответствующий дате слайд
         const activeSlide = [...slider.slides].find(slide => slide.dataset.slideSetDate == formattedDate);
         //меняем классы у слайдов
@@ -103,18 +104,21 @@ const options = {
     day: '2-digit',
 };
 //Сегодняшний день в нужном формате
-const calendarStartDate = datapicker.viewDate.toLocaleString('en', options);
+const calendarStartDate = stepOneDatapicker.viewDate.toLocaleString('en', options);
 //выбитаем сегодняшний день в календаре и получаемс первое событие onSelect
-datapicker.selectDate(calendarStartDate);
+stepOneDatapicker.selectDate(calendarStartDate);
 
 // описываем компонент слайдера
 const slider = new Swiper('.widget-template__slider', {
     modules: [Manipulation, Navigation],
-    // slidesPerView: 8,
     slidesPerView: "auto",
-    // slidesPerGroup: 3,
     spaceBetween: 5,
-    allowTouchMove: false,
+    allowTouchMove: true,
+    breakpoints: {
+        576: {
+            allowTouchMove: false,
+        }
+    },
     observeParents: true,
     navigation: {
         nextEl: '.swiper-button-next',
@@ -122,7 +126,6 @@ const slider = new Swiper('.widget-template__slider', {
     },
     on: {
         init() {
-
             //Готовим даты для выврда в слайд и циклом генерируем слайды в нужном колличиестве
             for (let index = 0; index < dayLimit + 1; index++) {
                 const slideDate = new Date().setDate(todayDate.getDate() + index);
@@ -155,7 +158,7 @@ const slider = new Swiper('.widget-template__slider', {
                 slide.addEventListener('click', (e) => {
                     e.preventDefault();
                     const dateForDatapickerUpdate = slide.dataset.slideSetDate;
-                    datapicker.selectDate(dateForDatapickerUpdate);
+                    stepOneDatapicker.selectDate(dateForDatapickerUpdate);
                 })
             });
         },
@@ -176,4 +179,16 @@ function slidesClassTogler(slides, slide) {
     slides.forEach(slide => slide.classList.remove('active'));
     slide.classList.add('active');
 }
+
+
+function checkWindowSize(e) {
+    const windowInnerWidth = window.innerWidth;
+    if (windowInnerWidth <= 576) {
+        stepOneDatapicker.update({ isMobile: true });
+    } else {
+        stepOneDatapicker.update({ isMobile: false });
+    }
+}
+checkWindowSize();
+window.addEventListener('resize', checkWindowSize);
 
