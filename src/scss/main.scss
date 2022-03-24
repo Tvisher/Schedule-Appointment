@@ -142,10 +142,7 @@ li {
 // }
 
 
-section {
-  overflow: hidden;
-  padding: 30px 0;
-}
+
 .section__title {
   font-size: 40px;
   font-weight: 800;
@@ -182,6 +179,7 @@ section {
   }
 }
 
+
 @import "./common.scss";
 
 .wrapper {
@@ -194,9 +192,11 @@ section {
   }
 }
 [data-render-container] {
-  min-height: 176px;
+  min-height: 218px;
 }
-
+.widget-template {
+  padding: 12px 0; 
+}
 .widget-template__slider-wrapper {
   min-height:60px;
   position: relative;
@@ -255,7 +255,6 @@ section {
     transform: rotate(180deg) translate3d(2px,0,0px);
   }
 }
-
 
 .widget-template__slider {
   &.blur {
@@ -344,7 +343,35 @@ section {
   border-bottom:$border-base;
 }
 .widget-template__body {
-  padding: 50px 34px 45px 34px;
+  padding: 50px 34px 0px 34px;
+}
+.widget-template__warning {
+  color: $brand-gray;
+  background: #FFFCC0;
+  border-radius: 4px;
+  padding: 6px 12px;
+  max-width: 790px;
+  margin: auto;
+  margin-bottom: -36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 14px;
+  a {
+    display: inline;
+    color: #1F2B3D;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+.warning__close {
+  align-self: flex-start;
+  height: 24px;
+  width: 24px;
+  margin-left: 5px;
+
 }
 .litle-title {
   font-weight: 600;
@@ -364,6 +391,9 @@ section {
 .widget-template__form {
   border:$border-base;
   background-color: #fff;
+  box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  margin-top: 58px;
 }
 .widget-template__nameplate {
   font-weight: 500;
@@ -378,6 +408,7 @@ section {
 }
 
 .widget-template__label {
+  margin-bottom: 40px;
   position: relative;
   &::before {
     cursor: pointer;
@@ -417,10 +448,14 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px;
+  flex-wrap: wrap;
+  .wrapper {
+    margin-bottom: 40px;
+    margin-right: 15px;
+  }
 }
 .widget-template__shedule {
-  margin-bottom: 56px;
+  padding-bottom: 26px;
   margin-top: 17px;
   margin-right: -8px;
   margin-left: -8px;
@@ -429,6 +464,7 @@ section {
   justify-content: center;
   flex-wrap: wrap;
   .shedule__block {
+   margin-bottom: 20px;
     flex: 0 0 50%;
     padding: 0px 8px;
     animation:fromOpacity .3s ease;
@@ -590,6 +626,8 @@ section {
 }
 
 .widget-template__footer {
+  padding: 10px 34px 46px 34px;
+  
   display: flex;
   min-height: 50px;
   align-items: center;
@@ -671,14 +709,19 @@ section {
     stroke-dashoffset: -124;
   }
 }
+
+
+
 .render-container-wrapper {
   position: relative;
   .preloader-spin {
-    transition: opacity .2s ease;
+    transition: opacity .2s ease, visibility .2s ease;
     &.show {
       opacity: 1;
+      visibility: visible;
     }
     opacity: 0;
+    visibility: hidden;
     border-radius: 4px;
     background: #fff;
     position: absolute;
@@ -686,5 +729,86 @@ section {
     top: 0;
     width: 100%;
     height: 100%;
+  }
+}
+
+@media (max-width: 984px) {
+  .widget-template__shedule {
+    flex-direction: column;
+  }
+  .widget-template__shedule .shedule__block {
+    flex: 0 0 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .widget-template__slider-nav {
+    display: none;
+  }
+  .widget-template__shedule {
+    overflow: auto;
+  }
+  .widget-template__shedule .shedule__block {
+    flex: 0 0 auto;
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 576px) {
+  .widget-template__label {
+    width: 100%;
+    margin-bottom: 22px;
+  }
+  .widget-template__block .wrapper {
+    margin-bottom: 22px;
+    margin-right: 0;
+  }
+  .large-title {
+    font-size: 20px;
+  }
+  .widget-template__head,
+  .widget-template__body,
+  .widget-template__footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .widget-template__body {
+    padding-top: 23px;
+  }
+  .widget-template__footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .widget-template__footer .next-step {
+    width: 100%;
+    margin-left: initial;
+    order: -1;
+    flex-direction: column;
+    margin-bottom: 26px;
+    align-items: center;
+    .next-btn {
+      width: 100%;
+    }
+  }
+  .selected-date-wrapper {
+    margin: 0;
+    margin-bottom: 12px;
+  }
+}
+@media (max-width: 360px) {
+  .widget-template__slider-wrapper,
+  .render-container-wrapper {
+    margin-right: -18px;
+  }
+  .air-datepicker {
+    min-width: inherit;
+    max-width: 320px;
+    width: 100%;
+  }
+  .air-datepicker .air-datepicker-nav,
+  .air-datepicker .air-datepicker--content {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }

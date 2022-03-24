@@ -1844,11 +1844,6 @@ li {
   padding: 0;
 }
 
-section {
-  overflow: hidden;
-  padding: 30px 0;
-}
-
 .section__title {
   font-size: 40px;
   font-weight: 800;
@@ -1941,7 +1936,11 @@ button {
 }
 
 [data-render-container] {
-  min-height: 176px;
+  min-height: 218px;
+}
+
+.widget-template {
+  padding: 12px 0;
 }
 
 .widget-template__slider-wrapper {
@@ -2114,7 +2113,38 @@ button {
 }
 
 .widget-template__body {
-  padding: 50px 34px 45px 34px;
+  padding: 50px 34px 0px 34px;
+}
+
+.widget-template__warning {
+  color: #4C5563;
+  background: #FFFCC0;
+  border-radius: 4px;
+  padding: 6px 12px;
+  max-width: 790px;
+  margin: auto;
+  margin-bottom: -36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.widget-template__warning a {
+  display: inline;
+  color: #1F2B3D;
+}
+
+.widget-template__warning a:hover {
+  text-decoration: underline;
+}
+
+.warning__close {
+  align-self: flex-start;
+  height: 24px;
+  width: 24px;
+  margin-left: 5px;
 }
 
 .litle-title {
@@ -2138,6 +2168,9 @@ button {
 .widget-template__form {
   border: 1px solid #E1EAED;
   background-color: #fff;
+  box-shadow: 0px 4px 32px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+  margin-top: 58px;
 }
 
 .widget-template__nameplate {
@@ -2155,6 +2188,7 @@ button {
 }
 
 .widget-template__label {
+  margin-bottom: 40px;
   position: relative;
   width: 200px;
   display: flex;
@@ -2198,11 +2232,16 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.widget-template__block .wrapper {
   margin-bottom: 40px;
+  margin-right: 15px;
 }
 
 .widget-template__shedule {
-  margin-bottom: 56px;
+  padding-bottom: 26px;
   margin-top: 17px;
   margin-right: -8px;
   margin-left: -8px;
@@ -2213,6 +2252,7 @@ button {
 }
 
 .widget-template__shedule .shedule__block {
+  margin-bottom: 20px;
   flex: 0 0 50%;
   padding: 0px 8px;
   animation: fromOpacity 0.3s ease;
@@ -2400,6 +2440,7 @@ button {
 }
 
 .widget-template__footer {
+  padding: 10px 34px 46px 34px;
   display: flex;
   min-height: 50px;
   align-items: center;
@@ -2493,8 +2534,9 @@ button {
 }
 
 .render-container-wrapper .preloader-spin {
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
   opacity: 0;
+  visibility: hidden;
   border-radius: 4px;
   background: #fff;
   position: absolute;
@@ -2506,11 +2548,22 @@ button {
 
 .render-container-wrapper .preloader-spin.show {
   opacity: 1;
+  visibility: visible;
 }
 
 @media screen and (max-width: 1440px) {
   html {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 984px) {
+  .widget-template__shedule {
+    flex-direction: column;
+  }
+
+  .widget-template__shedule .shedule__block {
+    flex: 0 0 100%;
   }
 }
 
@@ -2521,6 +2574,71 @@ button {
 
   .container {
     max-width: 98%;
+  }
+}
+
+@media (max-width: 768px) {
+  .widget-template__slider-nav {
+    display: none;
+  }
+
+  .widget-template__shedule {
+    overflow: auto;
+  }
+
+  .widget-template__shedule .shedule__block {
+    flex: 0 0 auto;
+    min-width: 500px;
+  }
+}
+
+@media (max-width: 576px) {
+  .widget-template__label {
+    width: 100%;
+    margin-bottom: 22px;
+  }
+
+  .widget-template__block .wrapper {
+    margin-bottom: 22px;
+    margin-right: 0;
+  }
+
+  .large-title {
+    font-size: 20px;
+  }
+
+  .widget-template__head,
+  .widget-template__body,
+  .widget-template__footer {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .widget-template__body {
+    padding-top: 23px;
+  }
+
+  .widget-template__footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .widget-template__footer .next-step {
+    width: 100%;
+    margin-left: initial;
+    order: -1;
+    flex-direction: column;
+    margin-bottom: 26px;
+    align-items: center;
+  }
+
+  .widget-template__footer .next-step .next-btn {
+    width: 100%;
+  }
+
+  .selected-date-wrapper {
+    margin: 0;
+    margin-bottom: 12px;
   }
 }
 
@@ -2537,5 +2655,24 @@ button {
 @media screen and (max-width: 380px) {
   .container {
     padding: 0 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .widget-template__slider-wrapper,
+  .render-container-wrapper {
+    margin-right: -18px;
+  }
+
+  .air-datepicker {
+    min-width: inherit;
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .air-datepicker .air-datepicker-nav,
+  .air-datepicker .air-datepicker--content {
+    padding-right: 10px;
+    padding-left: 10px;
   }
 }

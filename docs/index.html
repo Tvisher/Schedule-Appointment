@@ -6,6 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Preload fonts -->
+    <link rel="preload" href="fonts/Klein-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-Black.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.min.css">
     <script> </script>
 </head>
@@ -15,7 +22,16 @@
     <main class="main">
         <section class="widget-template" id="widget-template">
             <div class="container small">
-                <form data-day-limit="24" class="widget-template__form">
+                <div class="widget-template__warning warning">
+                    <p>Please note that urgent care is not emergency care. In case of life-threatening event, you should <a href="tel:911">call 911</a></p>
+                    <button class="warning__close" onclick="this.parentNode.style.display = 'none'">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 8L16 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M16 8L8 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <form data-day-limit="14" class="widget-template__form">
                     <div class="widget-template__step" data-step="1">
                         <div class="widget-template__head">
                             <div class="wrapper column">
@@ -238,15 +254,15 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget-template__footer">
-                                <button class="back-btn">Back</button>
-                                <div class="next-step" data-show-next-step>
-                                    <div class="selected-date-wrapper">
-                                        <span class="selected-date"></span>
-                                        <span class="selected-time"></span>
-                                    </div>
-                                    <button class="next-btn">Next</button>
+                        </div>
+                        <div class="widget-template__footer">
+                            <button class="back-btn">Back</button>
+                            <div class="next-step" data-show-next-step>
+                                <div class="selected-date-wrapper">
+                                    <span class="selected-date"></span>
+                                    <span class="selected-time"></span>
                                 </div>
+                                <button class="next-btn">Next</button>
                             </div>
                         </div>
                     </div>
