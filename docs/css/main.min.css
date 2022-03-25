@@ -1793,7 +1793,7 @@ button.swiper-pagination-bullet {
 html {
   scroll-behavior: smooth;
   line-height: 1.2;
-  font-size: 18px;
+  font-size: 16px;
   color: #1F2B3D;
   height: 100%;
 }
@@ -1803,7 +1803,7 @@ body {
   flex-direction: column;
   height: 100%;
   font-family: "Montserrat" !important;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   color: #1F2B3D;
   -webkit-font-smoothing: antialiased;
@@ -2605,6 +2605,11 @@ button {
 }
 
 @media (max-width: 576px) {
+  .widget-template__shedule {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   .widget-template__label {
     width: 100%;
     margin-bottom: 22px;

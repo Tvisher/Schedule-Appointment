@@ -723,6 +723,10 @@ li {
 }
 
 @media (max-width: 576px) {
+  .widget-template__shedule {
+    margin-right: 0;
+    margin-left: 0;
+  }
   .widget-template__label {
     width: 100%;
     margin-bottom: 22px;
