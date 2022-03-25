@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Appointment</title>
     <!-- Preload fonts -->
     <link rel="preload" href="fonts/Klein-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -14,12 +14,14 @@
     <link rel="preload" href="fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.min.css">
+    <!-- Bagfix zero script -->
     <script> </script>
 </head>
 
 <body>
     <header class="header"></header>
     <main class="main">
+        <!-- Секция с компонентом формы -->
         <section class="widget-template" id="widget-template">
             <div class="container small">
                 <div class="widget-template__warning warning">
@@ -31,6 +33,7 @@
                         </svg>
                     </button>
                 </div>
+                <!-- На форме задаём дневной лимит для календаря и слайдера -->
                 <form data-day-limit="14" class="widget-template__form">
                     <div class="widget-template__step" data-step="1">
                         <div class="widget-template__head">
