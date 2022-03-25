@@ -1,5 +1,5 @@
 'use strict';
-import './vendors/vendors.js';
+// import './vendors/vendors.js';
 import Swiper, {
     Navigation,
     Manipulation
