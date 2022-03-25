@@ -22,6 +22,7 @@ const finishDate = new Date().setDate(todayDate.getDate() + dayLimit);
 // элементы куда выводить выбранные даты/время
 const currentDateTextElements = widgetTemplateParent.querySelectorAll('.selected-date');
 const currentTimeTextElements = widgetTemplateParent.querySelectorAll('.selected-time');
+const currentFullDateTextElements = widgetTemplateParent.querySelectorAll('.selected-date-full');
 // настройка скорости слайдера / скорости анимации
 const sliderSpeed = 1800;
 // описываем компонент календаря
@@ -52,6 +53,10 @@ const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
     onSelect({ date, formattedDate, datepicker }) {
         // выводим выбранную дату в элементы под это дело
         currentDateTextElements.forEach(textBlock => textBlock.textContent = datepicker.$altField.value);
+        currentFullDateTextElements.forEach(textBlock => textBlock.textContent = date.toLocaleString('en', { weekday: 'long', month: 'short', day: '2-digit', year: 'numeric' }));
+        setTimeout(() => {
+            currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = '');
+        }, 300);
         //Скрываем кнопку перехода к следущему шагу
         widgetTemplateStepOne.querySelector('[data-show-next-step]').classList.remove('show');
         // Место под отрисовку инппутов со временем
@@ -83,7 +88,7 @@ const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
                         const selectedTime = e.target.value;
                         console.log(`Выбранное время : ${selectedTime}`);
                         // выводим выбранное время в элементы под это дело
-                        currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = `,&nbsp;${selectedTime}`);
+                        currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = `&nbsp;${selectedTime}`);
                     })
                 });
             }
