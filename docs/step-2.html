@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment</title>
+    <!-- Preload fonts -->
+    <link rel="preload" href="fonts/Klein-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-Black.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/main.min.css">
+    <!-- Bagfix zero script -->
+    <script> </script>
+</head>
+
+<body>
+    <header class="header"></header>
+    <main class="main">
+        <!-- Секция с компонентом формы -->
+        <section class="widget-template" id="widget-template">
+            <div class="container small">
+                <div class="widget-template__warning warning">
+                    <p>Please note that urgent care is not emergency care. In case of life-threatening event, you should <a href="tel:911">call 911</a></p>
+                    <button class="warning__close" onclick="this.parentNode.style.display = 'none'">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M8 8L16 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M16 8L8 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
+                <!-- На форме задаём дневной лимит для календаря и слайдера -->
+                <form data-day-limit="14" class="widget-template__form">
+                    <div class="widget-template__step" data-step="2">
+                        <div class="widget-template__head">
+                            <div class="wrapper column">
+                                <h3 class="litle-title">Buckhead Primary Care Clinic</h3>
+                                <span class="litle-subtitle">1891 Howell Mill Road NW Suite A Atlanta, GA 30318 </span>
+                            </div>
+                            <div class="head-info">
+                                <div class="uploaded-data">
+                                    <span class="selected-time"></span>
+                                    -
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-template__body">
+                            <div class="wrapper">
+                                <div class="widget-template__block">
+                                    <div class="wrapper column">
+                                        <h2 class="large-title">Book Your Appointment</h2>
+                                        <span class="widget-template__nameplate step">2 out of 3</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="widget-template__footer">
+                            <button class="back-btn">Back</button>
+                            <div class="next-step" data-show-next-step>
+                                <button class="next-btn">Confirm Appointment</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer"></footer>
+    <script src="./js/app.min.js"></script>
+</body>
+
+
+</html>
