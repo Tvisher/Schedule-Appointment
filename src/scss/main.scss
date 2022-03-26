@@ -240,6 +240,7 @@ li {
   width: 100%;
   margin: 0;
   .swiper-slide {
+    overflow:hidden;
     animation: fromOpacity 1.5s ease-in-out;
     will-change: auto;
     cursor: pointer;

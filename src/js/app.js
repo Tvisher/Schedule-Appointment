@@ -61,23 +61,24 @@ const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
         widgetTemplateStepOne.querySelector('[data-show-next-step]').classList.remove('show');
         // Место под отрисовку инппутов со временем
         const renderTimeContainer = widgetTemplateStepOne.querySelector('[data-render-container]');
-        // Крутим прелоадер пока ждём респонс
+        // Крутим прелоадер пока ждём респонс и блокируем возможность нажать на слайд
         const timeCellPreloader = widgetTemplateStepOne.querySelector('[data-preloader]');
         timeCellPreloader.classList.add('show');
-
+        widgetTemplateSlider.classList.add('blur');
+        //Данные для запроса
+        console.log(`Выбранная дата в календаре в нужном формате для вёрстки: ${formattedDate}`);
+        console.log(`Дата в общем формате: ${date}`);
         setTimeout(() => {
             // запрос на сервак =>
             // тут можно разместить запрос на бэк за нужными данными по дате
-            console.log(`Выбранная дата в календаре в нужном формате для вёрстки: ${formattedDate}`);
-            console.log(`Дата в общем формате: ${date}`);
-
             // renderTimeContainerChildred - техническая переменная, в дальнейшем заменить на ответ с сервера
             let renderTimeContainerChildred = renderTimeContainer.innerHTML;
             // Очищаяем контейнер под инпуты и рендерим ответ с сервера
             renderTimeContainer.innerHTML = '';
             renderTimeContainer.innerHTML = renderTimeContainerChildred;
-            // Убираем спинер после отрисовки инпутов
+            // Убираем спинер и блокировку слайдера после отрисовки инпутов
             timeCellPreloader.classList.remove('show');
+            widgetTemplateSlider.classList.remove('blur');
             // После ответа с сервера и отрисовки инпутов, вешаем слушалку на инпуты
             const sheduleTimeInputs = widgetTemplateStepOne.querySelectorAll('[name="shedule-time"]');
             if (sheduleTimeInputs) {
@@ -171,12 +172,10 @@ const slider = new Swiper('.widget-template__slider', {
         },
         slideChangeTransitionEnd() {
             slider.updateSize();
-            widgetTemplateSlider.classList.remove('blur');
         },
-        //обновляем слайдер для коррекного отображения и блокируем возможность клика по нему во время анимаци перелистывания
+        //обновляем слайдер для коррекного отображения 
         slideChangeTransitionStart() {
             slider.updateSize();
-            widgetTemplateSlider.classList.add('blur');
         },
     }
 });

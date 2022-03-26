@@ -2044,6 +2044,7 @@ button {
 }
 
 .widget-template__slider .swiper-slide {
+  overflow: hidden;
   animation: fromOpacity 1.5s ease-in-out;
   will-change: auto;
   cursor: pointer;
