@@ -22,8 +22,8 @@
     <header class="header"></header>
     <main class="main">
         <!-- Секция с компонентом формы -->
-        <section class="widget-template" id="widget-template">
-            <div class="container small">
+        <div class="container small">
+            <section class="widget-template" id="widget-template">
                 <div class="widget-template__warning warning">
                     <p>Please note that urgent care is not emergency care. In case of life-threatening event, you should <a href="tel:911">call 911</a></p>
                     <button class="warning__close" onclick="this.parentNode.style.display = 'none'">
@@ -61,21 +61,21 @@
                                 </div>
                             </div>
                             <div class="widget-template__labeles">
-                                <label>
+                                <label class="widget-template__label">
                                     <span class="widget-template__nameplate">First name</span>
-                                    <input type="text" placeholder="John">
+                                    <input class="form-text-input" type="text" placeholder="John" required>
                                 </label>
-                                <label>
+                                <label class="widget-template__label">
                                     <span class="widget-template__nameplate">Last name</span>
-                                    <input type="text" placeholder="Doe">
+                                    <input class="form-text-input" type="text" placeholder="Doe" required>
                                 </label>
-                                <label>
+                                <label class="widget-template__label">
                                     <span class="widget-template__nameplate">E-mail</span>
-                                    <input type="text" placeholder="">
+                                    <input class="form-text-input" type="email" placeholder="example@gmail.com" required>
                                 </label>
-                                <label>
+                                <label class="widget-template__label">
                                     <span class="widget-template__nameplate">Phone number</span>
-                                    <input type="text" placeholder="+9">
+                                    <input class="form-text-input" type="tel" placeholder="+9" required>
                                 </label>
                             </div>
                         </div>
@@ -89,8 +89,8 @@
 
 
                 </form>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
     <footer class="footer"></footer>
     <script src="./js/app.min.js"></script>

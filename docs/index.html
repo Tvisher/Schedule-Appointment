@@ -15,266 +15,437 @@
     <link rel="preload" href="fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.min.css">
     <!-- Bagfix zero script -->
+    <script src="https://unpkg.com/vue@3"></script>
+
     <script> </script>
 </head>
 
-<body>
+<body id="app">
     <header class="header"></header>
     <main class="main">
         <!-- Секция с компонентом формы -->
         <section class="widget-template" id="widget-template">
-            <div class="container small">
-                <div class="widget-template__warning warning">
-                    <p>Please note that urgent care is not emergency care. In case of life-threatening event, you should <a href="tel:911">call 911</a></p>
-                    <button class="warning__close" onclick="this.parentNode.style.visibility = 'hidden'">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8 8L16 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            <path d="M16 8L8 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </button>
+            <div class="widget-template__warning warning">
+                <p>Please note that urgent care is not emergency care. In case of life-threatening event, you should <a href="tel:911">call 911</a></p>
+                <button class="warning__close" onclick="this.parentNode.style.visibility = 'hidden'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 8L16 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M16 8L8 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+            <!-- На форме задаём дневной лимит для календаря и слайдера -->
+            <form data-day-limit="14" class="widget-template__form" v-on:submit.prevent>
+                <div class="widget-template__step" data-step="1" v-show="step == 1">
+                    <div class="widget-template__head">
+                        <div class="location">
+                            <h3 class="litle-title">Buckhead Primary Care Clinic</h3>
+                            <span class="litle-subtitle">1891 Howell Mill Road NW Suite A Atlanta, GA 30318 </span>
+                        </div>
+                        <div class="head-info"></div>
+                    </div>
+                    <div class="widget-template__body">
+                        <div class="wrapper">
+                            <div class="widget-template__block">
+                                <div class="wrapper column">
+                                    <h2 class="large-title">Select a Date and Time</h2>
+                                    <span class="widget-template__nameplate step">1 out of 3</span>
+                                </div>
+                                <label class="widget-template__datapicker">
+                                    <span class="widget-template__nameplate">Date</span>
+                                    <input type="text" id="widget-datapicker" name="datapicker-date" value="">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="widget-template__slider-wrapper">
+                            <div class="widget-template__slider-nav">
+                                <div class="swiper-button-prev">
+                                    <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L7 7L1 13" stroke="#BEC4CF" stroke-width="2" />
+                                    </svg>
+                                </div>
+                                <div class="swiper-button-next">
+                                    <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 1L7 7L1 13" stroke="#BEC4CF" stroke-width="2" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="swiper widget-template__slider">
+                                <div class="swiper-wrapper">
+                                    <!-- тут происходит отрисовка слайдов в js  -->
+                                </div>
+                            </div>
+                        </div>
+                        <span class="widget-template__nameplate pl">Today</span>
+                        <div class="render-container-wrapper">
+                            <div class="preloader-spin" data-preloader>
+                                <svg class="spinner" viewBox="0 0 50 50">
+                                    <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                                </svg>
+                            </div>
+                            <div class="widget-template__shedule shedule" data-render-container>
+                                <div class="shedule__block">
+                                    <span class="widget-template__nameplate">am</span>
+                                    <ul class="shedule__block-list">
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="7:00 am" name="shedule-time">
+                                            <span class="shedule-time">7:00 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="7:15 am" name="shedule-time">
+                                            <span class="shedule-time">7:15 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" disabled type="radio" value="7:30 am" name="shedule-time">
+                                            <span class="shedule-time">7:30 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="7:45 am" name="shedule-time">
+                                            <span class="shedule-time">7:45 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" disabled type="radio" value="8:00 am" name="shedule-time">
+                                            <span class="shedule-time">8:00 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="8:15 am" name="shedule-time">
+                                            <span class="shedule-time">8:15 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="8:30 am" name="shedule-time">
+                                            <span class="shedule-time">8:30 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="8:45 am" name="shedule-time">
+                                            <span class="shedule-time">8:45 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" disabled type="radio" value="9:00 am" name="shedule-time">
+                                            <span class="shedule-time">9:00 am</span>
+                                        </li>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="9:15 am" name="shedule-time">
+                                            <span class="shedule-time">9:15 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="9:30 am" name="shedule-time">
+                                            <span class="shedule-time">9:30 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="9:45 am" name="shedule-time">
+                                            <span class="shedule-time">9:45 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="10:00 am" name="shedule-time">
+                                            <span class="shedule-time">10:00 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="10:15 am" name="shedule-time">
+                                            <span class="shedule-time">10:15 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="10:30 am" name="shedule-time">
+                                            <span class="shedule-time">10:30 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="10:45 am" name="shedule-time">
+                                            <span class="shedule-time">10:45 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="11:00 am" name="shedule-time">
+                                            <span class="shedule-time">11:00 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="11:15 am" name="shedule-time">
+                                            <span class="shedule-time">11:15 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="11:30 am" name="shedule-time">
+                                            <span class="shedule-time">11:30 am</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="11:45 am" name="shedule-time">
+                                            <span class="shedule-time">11:45 am</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="shedule__block">
+                                    <span class="widget-template__nameplate">pm</span>
+                                    <ul class="shedule__block-list">
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="12:00 pm" name="shedule-time">
+                                            <span class="shedule-time">12:00 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="12:15 pm" name="shedule-time">
+                                            <span class="shedule-time">12:15 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" disabled type="radio" value="12:30 pm" name="shedule-time">
+                                            <span class="shedule-time">12:30 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="12:45 pm" name="shedule-time">
+                                            <span class="shedule-time">12:45 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" disabled type="radio" value="13:00 pm" name="shedule-time">
+                                            <span class="shedule-time">13:00 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="13:15 pm" name="shedule-time">
+                                            <span class="shedule-time">13:15 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="13:30 pm" name="shedule-time">
+                                            <span class="shedule-time">13:30 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="13:45 pm" name="shedule-time">
+                                            <span class="shedule-time">13:45 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" disabled type="radio" value="14:00 pm" name="shedule-time">
+                                            <span class="shedule-time">14:00 pm</span>
+                                        </li>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="14:15 pm" name="shedule-time">
+                                            <span class="shedule-time">14:15 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="14:30 pm" name="shedule-time">
+                                            <span class="shedule-time">14:30 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="14:45 pm" name="shedule-time">
+                                            <span class="shedule-time">14:45 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="15:00 pm" name="shedule-time">
+                                            <span class="shedule-time">15:00 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="15:15 pm" name="shedule-time">
+                                            <span class="shedule-time">15:15 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="15:30 pm" name="shedule-time">
+                                            <span class="shedule-time">15:30 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="15:45 pm" name="shedule-time">
+                                            <span class="shedule-time">15:45 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="16:00 pm" name="shedule-time">
+                                            <span class="shedule-time">16:00 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="16:15 pm" name="shedule-time">
+                                            <span class="shedule-time">16:15 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="16:30 pm" name="shedule-time">
+                                            <span class="shedule-time">16:30 pm</span>
+                                        </li>
+                                        <li>
+                                            <input class="shedule-input" type="radio" value="16:45 pm" name="shedule-time">
+                                            <span class="shedule-time">16:45 pm</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-template__footer">
+                        <button class="back-btn">Back</button>
+                        <div class="next-step" data-show-next-step>
+                            <div class="selected-date-wrapper">
+                                <span class="selected-date"></span>
+                                <span class="selected-time"></span>
+                            </div>
+                            <button class="next-btn" v-on:click="nextStep">Next</button>
+                        </div>
+                    </div>
                 </div>
-                <!-- На форме задаём дневной лимит для календаря и слайдера -->
-                <form data-day-limit="14" class="widget-template__form">
-                    <div class="widget-template__step" data-step="1">
-                        <div class="widget-template__head">
+                <div class="widget-template__step" data-step="2" v-show="step == 2">
+                    <div class="widget-template__head">
+                        <div class="location">
+                            <h3 class="litle-title">Buckhead Primary Care Clinic</h3>
+                            <span class="litle-subtitle">1891 Howell Mill Road NW Suite A Atlanta, GA 30318 </span>
+                        </div>
+                        <div class="head-info location">
+                            <div class="uploaded-data">
+                                <span class="selected-time"> 13:45 pm</span>
+                                <span>&nbsp;- &nbsp;</span>
+                                <span class="selected-date-full">Friday, Mar 25, 2022</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-template__body">
+                        <div class="wrapper">
+                            <div class="widget-template__block">
+                                <div class="wrapper column">
+                                    <h2 class="large-title">Book Your Appointment</h2>
+                                    <span class="widget-template__nameplate step">2 out of 3</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-template__labeles">
+                            <label class="widget-template__label">
+                                <span class="widget-template__nameplate">First name</span>
+                                <input class="form-text-input" type="text" placeholder="John" required v-model="user.name">
+                            </label>
+                            <label class="widget-template__label">
+                                <span class="widget-template__nameplate">Last name</span>
+                                <input class="form-text-input" type="text" placeholder="Doe" required v-model="user.surname">
+                            </label>
+                            <label class="widget-template__label">
+                                <span class="widget-template__nameplate">E-mail</span>
+                                <input class="form-text-input" type="email" placeholder="example@gmail.com" required v-model="user.email">
+                            </label>
+                            <label class="widget-template__label">
+                                <span class="widget-template__nameplate">Phone number</span>
+                                <input class="form-text-input" type="tel" placeholder="+9" required v-model="user.phone">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="widget-template__footer">
+                        <button class="back-btn" v-on:click="prevStep">Back</button>
+                        <div class="next-step" data-show-next-step>
+                            <button class="next-btn" v-on:click="nextStep">Confirm Appointment</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-template__step" data-step="3" v-show="step == 3">
+                    <div class="widget-template__head">
+                        <div class="location">
+                            <h2 class="large-title">Select a Date and Time</h2>
+                            <span class="widget-template__nameplate step">3 out of 3</span>
+                        </div>
+                        <div class="location calendar">
+                            <a href="#" class="calendar-link">Add to Google calendar</a>
+                        </div>
+                    </div>
+                    <div class="widget-template__body">
+                        <div class="appointment-status">
+                            <div class="ico-wrapper true">
+                                <svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 5.81481L5.93592 11L16 1" stroke="#1F2B3D" stroke-width="2" />
+                                </svg>
+                            </div>
+                            <h3 class="litle-title">Your appointment is confirmed.</h3>
+                        </div>
+                        <div class="info-table">
                             <div class="location">
                                 <h3 class="litle-title">Buckhead Primary Care Clinic</h3>
                                 <span class="litle-subtitle">1891 Howell Mill Road NW Suite A Atlanta, GA 30318 </span>
                             </div>
-                            <div class="head-info"></div>
-                        </div>
-                        <div class="widget-template__body">
-                            <div class="wrapper">
-                                <div class="widget-template__block">
-                                    <div class="wrapper column">
-                                        <h2 class="large-title">Select a Date and Time</h2>
-                                        <span class="widget-template__nameplate step">1 out of 3</span>
-                                    </div>
-                                    <label class="widget-template__label">
-                                        <span class="widget-template__nameplate">Date</span>
-                                        <input type="text" id="widget-datapicker" name="datapicker-date" value="">
-                                    </label>
+                            <div class="head-info location">
+                                <div class="uploaded-data">
+                                    <span class="selected-time">13:45 pm</span>
+                                    <span>&nbsp;- &nbsp;</span>
+                                    <span class="selected-date-full">Friday, Mar 25, 2022</span>
                                 </div>
                             </div>
-                            <div class="widget-template__slider-wrapper">
-                                <div class="widget-template__slider-nav">
-                                    <div class="swiper-button-prev">
-                                        <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 1L7 7L1 13" stroke="#BEC4CF" stroke-width="2" />
-                                        </svg>
-                                    </div>
-                                    <div class="swiper-button-next">
-                                        <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 1L7 7L1 13" stroke="#BEC4CF" stroke-width="2" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="swiper widget-template__slider">
-                                    <div class="swiper-wrapper">
-                                        <!-- тут происходит отрисовка слайдов в js  -->
-                                    </div>
-                                </div>
+                            <div class="user-data">
+                                <span class="data-dext">{{user.name}}</span>
+                                <span class="data-dext">{{user.surname}}</span>
                             </div>
-                            <span class="widget-template__nameplate pl">Today</span>
-                            <div class="render-container-wrapper">
-                                <div class="preloader-spin" data-preloader>
-                                    <svg class="spinner" viewBox="0 0 50 50">
-                                        <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-                                    </svg>
-                                </div>
-                                <div class="widget-template__shedule shedule" data-render-container>
-                                    <div class="shedule__block">
-                                        <span class="widget-template__nameplate">am</span>
-                                        <ul class="shedule__block-list">
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="7:00 am" name="shedule-time">
-                                                <span class="shedule-time">7:00 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="7:15 am" name="shedule-time">
-                                                <span class="shedule-time">7:15 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" disabled type="radio" value="7:30 am" name="shedule-time">
-                                                <span class="shedule-time">7:30 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="7:45 am" name="shedule-time">
-                                                <span class="shedule-time">7:45 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" disabled type="radio" value="8:00 am" name="shedule-time">
-                                                <span class="shedule-time">8:00 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="8:15 am" name="shedule-time">
-                                                <span class="shedule-time">8:15 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="8:30 am" name="shedule-time">
-                                                <span class="shedule-time">8:30 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="8:45 am" name="shedule-time">
-                                                <span class="shedule-time">8:45 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" disabled type="radio" value="9:00 am" name="shedule-time">
-                                                <span class="shedule-time">9:00 am</span>
-                                            </li>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="9:15 am" name="shedule-time">
-                                                <span class="shedule-time">9:15 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="9:30 am" name="shedule-time">
-                                                <span class="shedule-time">9:30 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="9:45 am" name="shedule-time">
-                                                <span class="shedule-time">9:45 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="10:00 am" name="shedule-time">
-                                                <span class="shedule-time">10:00 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="10:15 am" name="shedule-time">
-                                                <span class="shedule-time">10:15 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="10:30 am" name="shedule-time">
-                                                <span class="shedule-time">10:30 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="10:45 am" name="shedule-time">
-                                                <span class="shedule-time">10:45 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="11:00 am" name="shedule-time">
-                                                <span class="shedule-time">11:00 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="11:15 am" name="shedule-time">
-                                                <span class="shedule-time">11:15 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="11:30 am" name="shedule-time">
-                                                <span class="shedule-time">11:30 am</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="11:45 am" name="shedule-time">
-                                                <span class="shedule-time">11:45 am</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="shedule__block">
-                                        <span class="widget-template__nameplate">pm</span>
-                                        <ul class="shedule__block-list">
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="12:00 pm" name="shedule-time">
-                                                <span class="shedule-time">12:00 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="12:15 pm" name="shedule-time">
-                                                <span class="shedule-time">12:15 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" disabled type="radio" value="12:30 pm" name="shedule-time">
-                                                <span class="shedule-time">12:30 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="12:45 pm" name="shedule-time">
-                                                <span class="shedule-time">12:45 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" disabled type="radio" value="13:00 pm" name="shedule-time">
-                                                <span class="shedule-time">13:00 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="13:15 pm" name="shedule-time">
-                                                <span class="shedule-time">13:15 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="13:30 pm" name="shedule-time">
-                                                <span class="shedule-time">13:30 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="13:45 pm" name="shedule-time">
-                                                <span class="shedule-time">13:45 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" disabled type="radio" value="14:00 pm" name="shedule-time">
-                                                <span class="shedule-time">14:00 pm</span>
-                                            </li>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="14:15 pm" name="shedule-time">
-                                                <span class="shedule-time">14:15 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="14:30 pm" name="shedule-time">
-                                                <span class="shedule-time">14:30 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="14:45 pm" name="shedule-time">
-                                                <span class="shedule-time">14:45 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="15:00 pm" name="shedule-time">
-                                                <span class="shedule-time">15:00 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="15:15 pm" name="shedule-time">
-                                                <span class="shedule-time">15:15 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="15:30 pm" name="shedule-time">
-                                                <span class="shedule-time">15:30 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="15:45 pm" name="shedule-time">
-                                                <span class="shedule-time">15:45 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="16:00 pm" name="shedule-time">
-                                                <span class="shedule-time">16:00 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="16:15 pm" name="shedule-time">
-                                                <span class="shedule-time">16:15 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="16:30 pm" name="shedule-time">
-                                                <span class="shedule-time">16:30 pm</span>
-                                            </li>
-                                            <li>
-                                                <input class="shedule-input" type="radio" value="16:45 pm" name="shedule-time">
-                                                <span class="shedule-time">16:45 pm</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                            <div class="user-data">
+                                <span class="data-dext">{{user.email}}</span>
                             </div>
-                        </div>
-                        <div class="widget-template__footer">
-                            <button class="back-btn">Back</button>
-                            <div class="next-step" data-show-next-step>
-                                <div class="selected-date-wrapper">
-                                    <span class="selected-date"></span>
-                                    ,
-                                    <span class="selected-time"></span>
-                                </div>
-                                <button class="next-btn">Next</button>
+                            <div class="user-data">
+                                <span class="data-dext">{{user.phone}}</span>
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
+                    <div class="widget-template__footer">
+                        <button class="back-btn" v-on:click="cancelStep">Cancel Appointment</button>
+                        <div class="next-step" data-show-next-step>
+                            <button class="next-btn">Reschedule Appointment</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-template__step" data-step="3" v-show="step == 'cancel'">
+                    <div class="widget-template__head">
+                        <div class="location">
+                        </div>
+                    </div>
+                    <div class="widget-template__body">
+                        <div class="appointment-status">
+                            <div class="ico-wrapper false">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4L20 20" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M20 4L4 20" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </div>
+                            <h3 class="litle-title">Your appointment has been canceled</h3>
+                        </div>
+                        <div class="info-table cancel">
+                            <div class="location">
+                                <h3 class="litle-title">Buckhead Primary Care Clinic</h3>
+                                <span class="litle-subtitle">1891 Howell Mill Road NW Suite A Atlanta, GA 30318 </span>
+                            </div>
+                            <div class="head-info location">
+                                <div class="uploaded-data">
+                                    <span class="selected-time">13:45 pm</span>
+                                    <span>&nbsp;- &nbsp;</span>
+                                    <span class="selected-date-full">Friday, Mar 25, 2022</span>
+                                </div>
+                            </div>
+                            <div class="user-data">
+                                <span class="data-dext">{{user.name}}</span>
+                                <span class="data-dext">{{user.surname}}</span>
+                            </div>
+                            <div class="user-data">
+                                <span class="data-dext">{{user.email}}</span>
+                            </div>
+                            <div class="user-data">
+                                <span class="data-dext">{{user.phone}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-template__footer">
+                        <button class="back-btn">New Appointment</button>
+                        <div class="next-step" data-show-next-step>
+                            <button class="next-btn">Go home</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </section>
     </main>
     <footer class="footer"></footer>
+    <script>
+        Vue.createApp({
+            data() {
+                return {
+                    message: 'Hello Vue!',
+                    step: 1,
+                    user: {
+                        name: '',
+                        surname: '',
+                        email: '',
+                        phone: '',
+                    }
+                }
+            },
+            methods: {
+                nextStep() {
+                    this.step++;
+                },
+                prevStep() {
+                    this.step--;
+                },
+                cancelStep() {
+                    this.step = 'cancel'
+                }
+            }
+        }).mount('#app')
+    </script>
     <script src="./js/app.min.js"></script>
 </body>
 

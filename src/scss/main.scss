@@ -158,6 +158,8 @@ li {
 }
 .widget-template {
   padding: 12px 0; 
+  max-width:944px;
+  margin: auto;
 }
 .widget-template__slider-wrapper {
   min-height:60px;
@@ -219,12 +221,15 @@ li {
 }
 
 .widget-template__slider {
+  position: relative;
+  max-width: 86.5%;
+  width: 100%;
+  margin: 0;
   &.blur {
     &:before {
       z-index: 2;
     }
   }
-  position: relative;
   &:before {
     position: absolute;
     content: '';
@@ -236,9 +241,6 @@ li {
   .swiper-wrapper {
     transition-timing-function: ease-in-out;
   }
-  max-width: 756px;
-  width: 100%;
-  margin: 0;
   .swiper-slide {
     overflow:hidden;
     animation: fromOpacity 1.5s ease-in-out;
@@ -313,6 +315,7 @@ li {
 }
 
 .location {
+  min-height: 87px;
   flex: 0 0 60%;
   padding: 25px 34px 17px 34px;
   display: flex;
@@ -385,6 +388,7 @@ li {
   flex-direction: column;
 }
 .widget-template__form {
+  flex-wrap: wrap;
   display: flex;
   border:$border-base;
   background-color: #fff;
@@ -405,7 +409,7 @@ li {
   }
 }
 
-.widget-template__label {
+.widget-template__datapicker{
   margin-bottom: 40px;
   position: relative;
   &::before {
@@ -633,6 +637,15 @@ li {
     }
   }
 }
+[data-step="3"] {
+  .location {
+    flex: 0 0 50%;
+    justify-content: center;
+  }
+  .widget-template__head {
+    border:none;
+  }
+}
 
 .widget-template__footer {
   margin-top: auto;
@@ -748,12 +761,34 @@ li {
       border-left:none;
       border-top:$border-base;
     }
-    flex: 0 0 100%;
+    flex: 0 0 100% !important;
+    &.calendar {
+      padding-top: 0;
+      justify-content: flex-start;
+      align-items: flex-start;
+      min-height: initial;
+    }
+  }
+  .calendar-link {
+    margin-left: 0;
   }
 }
 
 
 @media (max-width: 768px) {
+  .appointment-status {
+    text-align: center;
+  }
+  .info-table .location,
+  .info-table .user-data {
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / 4 !important;
+    border:$border-base !important;
+    &:not(:last-child) {
+      border-bottom:none !important;
+    }
+  }
 
   .widget-template__slider-nav {
     display: none;
@@ -768,6 +803,25 @@ li {
 }
 
 @media (max-width: 576px) {
+  .next-btn {
+    padding: 14px 25px;
+  }
+  .info-table .location,
+  .info-table .user-data {
+    padding-left: 19px;
+    padding-right: 19px;
+    text-align: center;
+  }
+  .location.calendar {
+    align-items: center;
+    padding-bottom: 0;
+  }
+  .info-table .litle-title {
+    margin-bottom: 13px;
+  }
+  .appointment-status {
+    margin-bottom: 36px;
+  }
   .widget-template__labeles {
     flex-direction: column;
     label {
@@ -783,7 +837,7 @@ li {
     margin-right: 0;
     margin-left: 0;
   }
-  .widget-template__label {
+  .widget-template__datapicker{
     width: 100%;
     margin-bottom: 22px;
   }
@@ -865,6 +919,7 @@ li {
     width: 20px;
     height: 22px;
     content: '';
+    display: block;
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='20' height='22' viewBox='0 0 20 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M3 4C2.44772 4 2 4.44772 2 5V19C2 19.5523 2.44772 20 3 20H17C17.5523 20 18 19.5523 18 19V5C18 4.44772 17.5523 4 17 4H3ZM0 5C0 3.34315 1.34315 2 3 2H17C18.6569 2 20 3.34315 20 5V19C20 20.6569 18.6569 22 17 22H3C1.34315 22 0 20.6569 0 19V5Z' fill='%231F2B3D'/%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M14 0C14.5523 0 15 0.447715 15 1V5C15 5.55228 14.5523 6 14 6C13.4477 6 13 5.55228 13 5V1C13 0.447715 13.4477 0 14 0Z' fill='%231F2B3D'/%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M6 0C6.55228 0 7 0.447715 7 1V5C7 5.55228 6.55228 6 6 6C5.44772 6 5 5.55228 5 5V1C5 0.447715 5.44772 0 6 0Z' fill='%231F2B3D'/%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 9C0 8.44771 0.447715 8 1 8H19C19.5523 8 20 8.44771 20 9C20 9.55228 19.5523 10 19 10H1C0.447715 10 0 9.55228 0 9Z' fill='%231F2B3D'/%3e%3c/svg%3e ");
@@ -872,22 +927,121 @@ li {
 }
 
 .widget-template__labeles {
-  max-width: 718px;
+  max-width: 405px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   margin: auto;
-  label {
-    padding: 0 8px;
-    flex: 0 0 50%;
-    margin-bottom: 16px;
+  margin-bottom: 42px;
+}
+.widget-template__label {
+  padding: 0 8px;
+  flex: 0 0 100%;
+  margin-bottom: 16px;
+}
+.form-text-input {
+  border-radius: 5px;
+  width: 100%;
+  padding: 14px 20px;
+  border: $border-base;
+}
+.calendar-link {
+  color:$brand-blue;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  &::after {
+    flex: 0 0 auto;
+    display: block;
+    content: '';
+    width: 31px;
+    height: 31px;
+    background-image: url('../img/calendar-ico.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 13px;
   }
-  input {
-    border-radius: 5px;
-    width: 100%;
-    padding: 14px 20px;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.appointment-status {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .ico-wrapper  {
+    margin-bottom: 12px;
+  }
+}
+.ico-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius:50%;
+  &.true {
+    background-color: #C0FFD2;
+  }
+  &.false {
+    background-color: #FFDADA;
+  }
+  &.warn {
+    background-color: #FFFCC0;
+  }
+}
+
+.info-table {
+  &.cancel * {
+    color:#A6AAB1;
+  }
+  margin: auto;
+  max-width: 729px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 0px;
+  margin-bottom: 50px;
+  .location {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    margin: 0;
     border: $border-base;
+    border-right:none;
+    border-bottom:none;
+    padding: 17px 29px;
+    &.head-info {
+      display: flex;
+      grid-column-start: 3;
+      grid-column-end: 3;
+      border: $border-base;
+      border-bottom:none;
+    }
+    .uploaded-data {
+      span:nth-of-type(2) {
+        display: none;
+      }
+    }
+    .uploaded-data::before{
+      display: none;
+    }
+  }
+  .user-data {
+    border: $border-base;
+    &:not(:last-child) {
+      border-right:none;
+    }
+    word-break: break-all;
+    padding: 17px 29px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    span {
+      margin-bottom: 5px;
+    }
   }
 }

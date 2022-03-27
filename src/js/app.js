@@ -52,7 +52,7 @@ const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
     // Событие описывающее момент выбора даты в календаре
     onSelect({ date, formattedDate, datepicker }) {
         // выводим выбранную дату в элементы под это дело
-        currentDateTextElements.forEach(textBlock => textBlock.textContent = datepicker.$altField.value);
+        currentDateTextElements.forEach(textBlock => textBlock.innerHTML = `${datepicker.$altField.value},&nbsp;`);
         currentFullDateTextElements.forEach(textBlock => textBlock.textContent = date.toLocaleString('en', { weekday: 'long', month: 'short', day: '2-digit', year: 'numeric' }));
         setTimeout(() => {
             currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = '');
@@ -89,7 +89,7 @@ const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
                         const selectedTime = e.target.value;
                         console.log(`Выбранное время : ${selectedTime}`);
                         // выводим выбранное время в элементы под это дело
-                        currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = `&nbsp;${selectedTime}`);
+                        currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = `${selectedTime}`);
                     })
                 });
             }
