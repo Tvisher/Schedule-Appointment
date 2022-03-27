@@ -15,7 +15,6 @@
     <link rel="preload" href="fonts/Montserrat-ExtraBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/main.min.css">
     <!-- Bagfix zero script -->
-    <script src="https://unpkg.com/vue@3"></script>
 
     <script> </script>
 </head>
@@ -27,7 +26,7 @@
         <section class="widget-template" id="widget-template">
             <div class="widget-template__warning warning">
                 <p>Please note that urgent care is not emergency care. In case of life-threatening event, you should <a href="tel:911">call 911</a></p>
-                <button class="warning__close" onclick="this.parentNode.style.visibility = 'hidden'">
+                <button type="button" class="warning__close" onclick="this.parentNode.style.visibility = 'hidden'">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8 8L16 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         <path d="M16 8L8 16" stroke="#1F2B3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -36,6 +35,8 @@
             </div>
             <!-- На форме задаём дневной лимит для календаря и слайдера -->
             <form data-day-limit="14" class="widget-template__form" v-on:submit.prevent>
+                <input type="text" class="hidden-input" name="selected-date" v-on:change="this.setDate">
+                <input type="text" class="hidden-input" name="selected-time" v-on:change="this.setTime">
                 <div class="widget-template__step" data-step="1" v-show="step == 1">
                     <div class="widget-template__head">
                         <div class="location">
@@ -260,13 +261,13 @@
                         </div>
                     </div>
                     <div class="widget-template__footer">
-                        <button class="back-btn">Back</button>
+                        <button type="button" class="back-btn">Back</button>
                         <div class="next-step" data-show-next-step>
                             <div class="selected-date-wrapper">
                                 <span class="selected-date"></span>
                                 <span class="selected-time"></span>
                             </div>
-                            <button class="next-btn" v-on:click="nextStep">Next</button>
+                            <button type="button" class="next-btn btn" v-on:click="nextStep">Next</button>
                         </div>
                     </div>
                 </div>
@@ -313,9 +314,9 @@
                         </div>
                     </div>
                     <div class="widget-template__footer">
-                        <button class="back-btn" v-on:click="prevStep">Back</button>
+                        <button type="button" class="back-btn" v-on:click="prevStep">Back</button>
                         <div class="next-step" data-show-next-step>
-                            <button class="next-btn" v-on:click="nextStep">Confirm Appointment</button>
+                            <button type="button" class="next-btn btn" v-on:click="nextStep">Confirm Appointment</button>
                         </div>
                     </div>
                 </div>
@@ -363,15 +364,15 @@
                         </div>
                     </div>
                     <div class="widget-template__footer">
-                        <button class="back-btn" v-on:click="cancelStep">Cancel Appointment</button>
+                        <button type="button" class="back-btn" v-on:click="cancelModal = true">Cancel Appointment</button>
                         <div class="next-step" data-show-next-step>
-                            <button class="next-btn">Reschedule Appointment</button>
+                            <button type="button" class="next-btn btn" v-on:click="step = 1">Reschedule Appointment</button>
                         </div>
                     </div>
                 </div>
                 <div class="widget-template__step" data-step="3" v-show="step == 'cancel'">
                     <div class="widget-template__head">
-                        <div class="location">
+                        <div class="location cancel">
                         </div>
                     </div>
                     <div class="widget-template__body">
@@ -409,9 +410,31 @@
                         </div>
                     </div>
                     <div class="widget-template__footer">
-                        <button class="back-btn">New Appointment</button>
+                        <button type="button" class="back-btn" v-on:click="step = 1">New Appointment</button>
                         <div class="next-step" data-show-next-step>
-                            <button class="next-btn">Go home</button>
+                            <button type="button" class="next-btn btn">Go home</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-template__modal" v-show="cancelModal">
+                    <div class="modal__contemt">
+                        <button class="close-btn" v-on:click="cancelModal = false">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4L20 20" stroke="#BEC4CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M20 4L4 20" stroke="#BEC4CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div class="appointment-status">
+                            <div class="ico-wrapper warn">
+                                <svg width="5" height="18" viewBox="0 0 5 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.32016 11.432H3.69616L4.29616 0.199999H0.744156L1.32016 11.432ZM2.52016 17.168C3.62416 17.168 4.41616 16.328 4.41616 15.296C4.41616 14.264 3.62416 13.448 2.52016 13.448C1.39216 13.448 0.576156 14.264 0.576156 15.296C0.576156 16.328 1.39216 17.168 2.52016 17.168Z" fill="#1F2B3D" />
+                                </svg>
+                            </div>
+                            <h3 class="litle-title">Do you need to cancel your appointment?</h3>
+                        </div>
+                        <div class="btns">
+                            <button type="button" class="btn ghostBtn" v-on:click="cancelModal = false">No</button>
+                            <button type="button" class="btn blueBtn" v-on:click="step = 'cancel';cancelModal = false">Yes</button>
                         </div>
                     </div>
                 </div>
@@ -419,12 +442,15 @@
         </section>
     </main>
     <footer class="footer"></footer>
+    <script src="https://unpkg.com/vue@3"></script>
     <script>
         Vue.createApp({
             data() {
                 return {
-                    message: 'Hello Vue!',
                     step: 1,
+                    selectedDate: null,
+                    selectedTime: null,
+                    cancelModal: false,
                     user: {
                         name: '',
                         surname: '',
@@ -433,7 +459,18 @@
                     }
                 }
             },
+            computed: {
+
+            },
             methods: {
+                setDate(e) {
+                    console.log(e.target.value);
+
+                },
+                setTime(e) {
+                    console.log(e.target.value);
+
+                },
                 nextStep() {
                     this.step++;
                 },
@@ -443,10 +480,17 @@
                 cancelStep() {
                     this.step = 'cancel'
                 }
+            },
+            created() {
+                window.addEventListener('load', () => {
+                    document.querySelector('#widget-template').style.opacity = 1;
+                }, { once: true });
+                console.log(1);
             }
         }).mount('#app')
     </script>
     <script src="./js/app.min.js"></script>
+
 </body>
 
 

@@ -66,8 +66,11 @@ const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
         timeCellPreloader.classList.add('show');
         widgetTemplateSlider.classList.add('blur');
         //Данные для запроса
-        console.log(`Выбранная дата в календаре в нужном формате для вёрстки: ${formattedDate}`);
-        console.log(`Дата в общем формате: ${date}`);
+        // console.log(`Выбранная дата в календаре в нужном формате для вёрстки: ${formattedDate}`);
+        document.querySelector('input[name="selected-date"]').setAttribute('value', formattedDate);
+        document.querySelector('input[name="selected-date"]').dispatchEvent(new Event('change'));
+
+        // console.log(`Дата в общем формате: ${date}`);
         setTimeout(() => {
             // запрос на сервак =>
             // тут можно разместить запрос на бэк за нужными данными по дате
@@ -87,7 +90,10 @@ const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
                         // Если выбран инпут со временем, отображаем кнопку со следующим шагом
                         widgetTemplateParent.querySelector('[data-show-next-step]').classList.add('show');
                         const selectedTime = e.target.value;
-                        console.log(`Выбранное время : ${selectedTime}`);
+                        // console.log(`Выбранное время : ${selectedTime}`);
+                        document.querySelector('input[name="selected-time"]').setAttribute('value', selectedTime);
+                        document.querySelector('input[name="selected-time"]').dispatchEvent(new Event('change'));
+
                         // выводим выбранное время в элементы под это дело
                         currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = `${selectedTime}`);
                     })

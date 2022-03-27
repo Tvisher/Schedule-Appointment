@@ -1822,6 +1822,14 @@ button {
   font-family: "Montserrat" !important;
 }
 
+.hidden-input {
+  opacity: 0;
+  visibility: hidden;
+  z-index: -1;
+  height: 0;
+  width: 0;
+}
+
 *,
 *:before,
 *:after {
@@ -1873,17 +1881,17 @@ li {
 }
 
 .btn {
-  font-size: 15px;
+  font-size: 16px;
   font-family: "Montserrat";
   display: flex;
   width: fit-content;
   align-items: center;
   justify-content: center;
-  padding: 8px 20px;
+  padding: 14px 25px;
   line-height: 120%;
   cursor: pointer;
-  border-radius: 36px;
-  border: 2px solid transparent;
+  border-radius: 5px;
+  border: 1px solid transparent;
   transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
@@ -1897,14 +1905,6 @@ li {
   transform: translateY(2px);
 }
 
-.btn.wide {
-  padding: 8px 28px;
-}
-
-.btn.wery-wide {
-  padding: 8px 43px;
-}
-
 .blueBtn {
   background-color: #2371E4;
   color: #fff;
@@ -1912,8 +1912,8 @@ li {
 
 .ghostBtn {
   background-color: transparent;
-  color: #fff;
-  border-color: rgba(217, 227, 232, 0.2);
+  color: #2371E4;
+  border-color: #BEC4CF;
 }
 
 .borderBtn {
@@ -1948,6 +1948,67 @@ button {
   padding: 12px 0;
   max-width: 944px;
   margin: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.widget-template__modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 43, 61, 0.2);
+  z-index: 10;
+}
+
+.modal__contemt {
+  position: relative;
+  max-width: 433px;
+  padding: 38px 90px 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  top: 50%;
+}
+
+.modal__contemt .close-btn {
+  position: absolute;
+  right: 17px;
+  top: 17px;
+  width: 16px;
+  height: 16px;
+}
+
+.modal__contemt .close-btn path {
+  transition: stroke 0.3s ease;
+}
+
+.modal__contemt .close-btn:hover path {
+  stroke: #2371E4;
+}
+
+.modal__contemt .ico-wrapper {
+  margin-bottom: 28px !important;
+}
+
+.modal__contemt .btns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+.modal__contemt .btns .btn {
+  margin: 0 10px;
+  max-width: 112px;
+  width: 100%;
 }
 
 .widget-template__slider-wrapper {
@@ -2841,6 +2902,19 @@ button {
 }
 
 @media (max-width: 576px) {
+  .modal__contemt {
+    padding-right: 10vw;
+    padding-left: 10vw;
+    max-width: 100%;
+    width: 90%;
+  }
+
+  .location.cancel {
+    min-height: initial;
+    height: 13px;
+    padding: 0;
+  }
+
   .next-btn {
     padding: 14px 25px;
   }

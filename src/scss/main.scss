@@ -78,6 +78,13 @@ input,
 button {
   font-family: $mainFont !important;
 }
+.hidden-input {
+ opacity: 0;
+ visibility: hidden;
+ z-index: -1;
+ height: 0;
+ width: 0;
+}
 
 *,
 *:before,
@@ -160,6 +167,61 @@ li {
   padding: 12px 0; 
   max-width:944px;
   margin: auto;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.widget-template__modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(31, 43, 61, 0.2);
+  z-index: 10;
+}
+.modal__contemt {
+  position: relative;
+  max-width: 433px;
+  padding: 38px 90px 55px ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,-100%);
+  top: 50%;
+  .close-btn {
+    position: absolute;
+    right: 17px;
+    top: 17px;
+    width: 16px;
+    height: 16px;
+    path {
+      transition: stroke 0.3s ease;
+    }
+    &:hover {
+      path {
+        stroke: $brand-blue;
+      }
+    }
+  }
+  .ico-wrapper {
+    margin-bottom: 28px !important;
+  }
+  .btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: -10px;
+    margin-left: -10px;
+    .btn {
+      margin: 0 10px;
+      max-width: 112px;
+      width: 100%;
+    }
+  }
 }
 .widget-template__slider-wrapper {
   min-height:60px;
@@ -803,6 +865,17 @@ li {
 }
 
 @media (max-width: 576px) {
+  .modal__contemt {
+    padding-right: 10vw;
+    padding-left: 10vw;
+    max-width: 100%;
+    width: 90%;
+  }
+  .location.cancel {
+    min-height: initial;
+    height: 13px;
+    padding: 0;
+  }
   .next-btn {
     padding: 14px 25px;
   }
