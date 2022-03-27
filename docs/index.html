@@ -19,7 +19,7 @@
     <script> </script>
 </head>
 
-<body id="app">
+<body>
     <header class="header"></header>
     <main class="main">
         <!-- Секция с компонентом формы -->
@@ -34,7 +34,7 @@
                 </button>
             </div>
             <!-- На форме задаём дневной лимит для календаря и слайдера -->
-            <form data-day-limit="14" class="widget-template__form" v-on:submit.prevent>
+            <form data-day-limit="14" class="widget-template__form" v-on:submit.prevent id="app">
                 <input type="text" class="hidden-input" name="selected-date" v-on:change="this.setDate">
                 <input type="text" class="hidden-input" name="selected-time" v-on:change="this.setTime">
                 <div class="widget-template__step" data-step="1" v-show="step == 1">
@@ -264,14 +264,13 @@
                         <button type="button" class="back-btn">Back</button>
                         <div class="next-step" data-show-next-step>
                             <div class="selected-date-wrapper">
-                                <span class="selected-date"></span>
-                                <span class="selected-time"></span>
+                                <span class="selected-date">{{selectedTime}}, {{selectedDate}}</span>
                             </div>
                             <button type="button" class="next-btn btn" v-on:click="nextStep">Next</button>
                         </div>
                     </div>
                 </div>
-                <div class="widget-template__step" data-step="2" v-show="step == 2">
+                <div class="widget-template__step" data-step="2" v-if="step == 2">
                     <div class="widget-template__head">
                         <div class="location">
                             <h3 class="litle-title">Buckhead Primary Care Clinic</h3>
@@ -279,9 +278,9 @@
                         </div>
                         <div class="head-info location">
                             <div class="uploaded-data">
-                                <span class="selected-time"> 13:45 pm</span>
+                                <span class="selected-time">{{selectedTime}}</span>
                                 <span>&nbsp;- &nbsp;</span>
-                                <span class="selected-date-full">Friday, Mar 25, 2022</span>
+                                <span class="selected-date-full">{{selectedDate}}</span>
                             </div>
                         </div>
                     </div>
@@ -314,13 +313,13 @@
                         </div>
                     </div>
                     <div class="widget-template__footer">
-                        <button type="button" class="back-btn" v-on:click="prevStep">Back</button>
+                        <button type="button" class="back-btn" v-on:click="resetFirstStep">Back</button>
                         <div class="next-step" data-show-next-step>
                             <button type="button" class="next-btn btn" v-on:click="nextStep">Confirm Appointment</button>
                         </div>
                     </div>
                 </div>
-                <div class="widget-template__step" data-step="3" v-show="step == 3">
+                <div class="widget-template__step" data-step="3" v-if="step == 3">
                     <div class="widget-template__head">
                         <div class="location">
                             <h2 class="large-title">Select a Date and Time</h2>
@@ -366,11 +365,11 @@
                     <div class="widget-template__footer">
                         <button type="button" class="back-btn" v-on:click="cancelModal = true">Cancel Appointment</button>
                         <div class="next-step" data-show-next-step>
-                            <button type="button" class="next-btn btn" v-on:click="step = 1">Reschedule Appointment</button>
+                            <button type="button" class="next-btn btn" v-on:click="resetFirstStep">Reschedule Appointment</button>
                         </div>
                     </div>
                 </div>
-                <div class="widget-template__step" data-step="3" v-show="step == 'cancel'">
+                <div class="widget-template__step" data-step="3" v-if="step == 'cancel'">
                     <div class="widget-template__head">
                         <div class="location cancel">
                         </div>
@@ -410,13 +409,13 @@
                         </div>
                     </div>
                     <div class="widget-template__footer">
-                        <button type="button" class="back-btn" v-on:click="step = 1">New Appointment</button>
+                        <button type="button" class="back-btn" v-on:click="resetFirstStep">New Appointment</button>
                         <div class="next-step" data-show-next-step>
                             <button type="button" class="next-btn btn">Go home</button>
                         </div>
                     </div>
                 </div>
-                <div class="widget-template__modal" v-show="cancelModal">
+                <div class="widget-template__modal" v-if="cancelModal">
                     <div class="modal__contemt">
                         <button class="close-btn" v-on:click="cancelModal = false">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -459,17 +458,20 @@
                     }
                 }
             },
-            computed: {
-
-            },
             methods: {
                 setDate(e) {
+                    this.selectedDate = e.target.value
+                    console.log(e.target.value);
+                },
+                setTime(e) {
+                    this.selectedTime = e.target.value
                     console.log(e.target.value);
 
                 },
-                setTime(e) {
-                    console.log(e.target.value);
-
+                resetFirstStep() {
+                    this.step = 1;
+                    stepOneDatapicker.selectDate(new Date);
+                    this.selectedTime = null;
                 },
                 nextStep() {
                     this.step++;
@@ -485,12 +487,11 @@
                 window.addEventListener('load', () => {
                     document.querySelector('#widget-template').style.opacity = 1;
                 }, { once: true });
-                console.log(1);
             }
         }).mount('#app')
     </script>
-    <script src="./js/app.min.js"></script>
 
+    <script src="./js/app.min.js"></script>
 </body>
 
 

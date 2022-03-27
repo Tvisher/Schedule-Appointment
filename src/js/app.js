@@ -1,5 +1,4 @@
 'use strict';
-// import './vendors/vendors.js';
 import Swiper, {
     Navigation,
     Manipulation
@@ -20,13 +19,13 @@ const todayDate = new Date();
 // получаем конеечный день учитывая ограничитель
 const finishDate = new Date().setDate(todayDate.getDate() + dayLimit);
 // элементы куда выводить выбранные даты/время
-const currentDateTextElements = widgetTemplateParent.querySelectorAll('.selected-date');
+// const currentDateTextElements = widgetTemplateParent.querySelectorAll('.selected-date');
 const currentTimeTextElements = widgetTemplateParent.querySelectorAll('.selected-time');
 const currentFullDateTextElements = widgetTemplateParent.querySelectorAll('.selected-date-full');
 // настройка скорости слайдера / скорости анимации
 const sliderSpeed = 1800;
 // описываем компонент календаря
-const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
+window.stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
     // куда выводить данные
     speed: sliderSpeed,
     autoClose: true,
@@ -52,10 +51,10 @@ const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
     // Событие описывающее момент выбора даты в календаре
     onSelect({ date, formattedDate, datepicker }) {
         // выводим выбранную дату в элементы под это дело
-        currentDateTextElements.forEach(textBlock => textBlock.innerHTML = `${datepicker.$altField.value},&nbsp;`);
+        // currentDateTextElements.forEach(textBlock => textBlock.innerHTML = `${datepicker.$altField.value},&nbsp;`);
         currentFullDateTextElements.forEach(textBlock => textBlock.textContent = date.toLocaleString('en', { weekday: 'long', month: 'short', day: '2-digit', year: 'numeric' }));
         setTimeout(() => {
-            currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = '');
+            // currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = '');
         }, 300);
         //Скрываем кнопку перехода к следущему шагу
         widgetTemplateStepOne.querySelector('[data-show-next-step]').classList.remove('show');
@@ -95,7 +94,7 @@ const stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
                         document.querySelector('input[name="selected-time"]').dispatchEvent(new Event('change'));
 
                         // выводим выбранное время в элементы под это дело
-                        currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = `${selectedTime}`);
+                        // currentTimeTextElements.forEach(timeElem => timeElem.innerHTML = `${selectedTime}`);
                     })
                 });
             }
