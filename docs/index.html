@@ -278,8 +278,7 @@
                         </div>
                         <div class="head-info location">
                             <div class="uploaded-data">
-                                <span class="selected-time">{{selectedTime}}</span>
-                                <span>&nbsp;- &nbsp;</span>
+                                <span class="selected-time">{{selectedTime}}&nbsp;- &nbsp;{{selectedWeekday}},&nbsp;</span>
                                 <span class="selected-date-full">{{selectedDate}}</span>
                             </div>
                         </div>
@@ -345,9 +344,8 @@
                             </div>
                             <div class="head-info location">
                                 <div class="uploaded-data">
-                                    <span class="selected-time">13:45 pm</span>
-                                    <span>&nbsp;- &nbsp;</span>
-                                    <span class="selected-date-full">Friday, Mar 25, 2022</span>
+                                    <span class="selected-time">{{selectedTime}}&nbsp;- &nbsp;{{selectedWeekday}},&nbsp;</span>
+                                    <span class="selected-date-full">{{selectedDate}}</span>
                                 </div>
                             </div>
                             <div class="user-data">
@@ -391,9 +389,8 @@
                             </div>
                             <div class="head-info location">
                                 <div class="uploaded-data">
-                                    <span class="selected-time">13:45 pm</span>
-                                    <span>&nbsp;- &nbsp;</span>
-                                    <span class="selected-date-full">Friday, Mar 25, 2022</span>
+                                    <span class="selected-time">{{selectedTime}}&nbsp;- &nbsp;{{selectedWeekday}},&nbsp;</span>
+                                    <span class="selected-date-full">{{selectedDate}}</span>
                                 </div>
                             </div>
                             <div class="user-data">
@@ -448,6 +445,7 @@
                 return {
                     step: 1,
                     selectedDate: null,
+                    selectedWeekday: null,
                     selectedTime: null,
                     cancelModal: false,
                     user: {
@@ -462,6 +460,8 @@
                 setDate(e) {
                     this.selectedDate = e.target.value
                     console.log(e.target.value);
+                    stepOneDatapicker.setViewDate(e.target.value)
+                    this.selectedWeekday = new Date(stepOneDatapicker.viewDate).toLocaleString('en', { weekday: 'long' });
                 },
                 setTime(e) {
                     this.selectedTime = e.target.value

@@ -838,6 +838,9 @@ li {
 
 
 @media (max-width: 768px) {
+  .widget-template__slider  {
+    max-width:initial;
+  }
   .appointment-status {
     text-align: center;
   }
@@ -865,6 +868,9 @@ li {
 }
 
 @media (max-width: 576px) {
+  .widget-template__datapicker {
+    margin-top: 20px;
+  }
   .modal__contemt {
     padding-right: 10vw;
     padding-left: 10vw;
@@ -1096,7 +1102,8 @@ li {
     }
     .uploaded-data {
       span:nth-of-type(2) {
-        display: none;
+        // display: none;
+        // opacity: 0;
       }
     }
     .uploaded-data::before{
