@@ -909,6 +909,7 @@ li {
       padding: 0;
     }
   }
+
   .widget-template__warning a {
     text-decoration: underline;
   }
@@ -1122,6 +1123,97 @@ li {
     justify-content: center;
     span {
       margin-bottom: 5px;
+    }
+  }
+}
+
+.widget-template__label {
+  cursor: pointer;
+  position: relative;
+  .form-textarea {
+    border:$border-base;
+    resize:vertical;
+    border-radius: 5px;
+    width: 100%;
+    min-height: 120px;
+    padding: 14px 20px;
+  }
+  .form-checkbox {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    &:checked + .checkbox-name{
+      &::before{
+        background:$brand-blue;
+        border-color: $brand-blue;
+      }
+      &::after{
+        opacity: 1;
+      }
+    }
+  }
+  .checkbox-name {
+    padding-left: 30px;
+    position: relative;
+    &::after {
+      position: absolute;
+      content:"";
+      left: 3px;
+      top: 50%;
+      transform: translateY(-40%);
+      width: 15px;
+      height: 15px;
+      border-radius:5px;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1 4.5L5 8.5L12.5 1' stroke='white' stroke-width='2'/%3e%3c/svg%3e ");
+      background-repeat: no-repeat;
+      background-size: contain;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    &::before {
+      transition: background-color .3s ease, border-color .3s ease;
+      position: absolute;
+      content:"";
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius:5px;
+      border: $border-base;
+    }
+  }
+  .form-radio {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    &:checked + .radio-name{
+      &::before{
+        border-color:$brand-blue;
+        border-width:5px;
+      }
+    }
+  }
+  .radio-name {
+    padding-left: 30px;
+    position: relative;
+    &::before {
+      transition: border-color .3s ease, border-width 0.15s linear;
+      position: absolute;
+      content:"";
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius:50%;
+      border: $border-base;
     }
   }
 }
