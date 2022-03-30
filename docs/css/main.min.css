@@ -1818,7 +1818,8 @@ body.hidden {
 }
 
 input,
-button {
+button,
+textarea {
   font-family: "Montserrat" !important;
 }
 
@@ -2820,6 +2821,7 @@ button {
 .widget-template__label {
   cursor: pointer;
   position: relative;
+  font-size: 16px;
 }
 
 .widget-template__label .form-textarea {

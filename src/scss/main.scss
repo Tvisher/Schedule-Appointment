@@ -88,7 +88,8 @@ body {
 }
 
 input,
-button {
+button,
+textarea {
   font-family: $mainFont !important;
 }
 
@@ -424,7 +425,6 @@ li {
 
 .widget-template__head {
   flex-wrap: wrap;
-  // padding: 25px 34px 17px 34px;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
@@ -1311,6 +1311,7 @@ li {
 .widget-template__label {
   cursor: pointer;
   position: relative;
+  font-size: 16px;
 
   .form-textarea {
     border: $border-base;
