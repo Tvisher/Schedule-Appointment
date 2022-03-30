@@ -1763,7 +1763,7 @@ button.swiper-pagination-bullet {
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently
-     not supported by any browser */
+                                  not supported by any browser */
 }
 
 @keyframes whiteShadow {
@@ -3000,6 +3000,10 @@ button {
 }
 
 @media (max-width: 576px) {
+  .widget-template__form {
+    margin-top: 70px;
+  }
+
   .widget-template__datapicker {
     margin-top: 20px;
   }
