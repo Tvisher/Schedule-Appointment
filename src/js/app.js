@@ -27,7 +27,6 @@ const sliderSpeed = 1800;
 // описываем компонент календаря
 window.stepOneDatapicker = new AirDatepicker('#widget-datapicker', {
     // куда выводить данные
-    speed: sliderSpeed,
     autoClose: true,
     position: 'bottom right',
     //Английская локализация
