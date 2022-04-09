@@ -2915,6 +2915,10 @@ button {
   font-size: 14px;
 }
 
+.relative-wrapper {
+  position: relative;
+}
+
 .widget-template__label {
   position: relative;
   font-size: 16px;

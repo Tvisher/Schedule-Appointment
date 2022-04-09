@@ -1316,10 +1316,14 @@ li {
   font-size: 14px;
 }
 
+.relative-wrapper {
+  position: relative;
+}
+
 .widget-template__label {
   &.pointer {
     cursor: pointer;
-
+    // flex-basis: fit-content;
   }
 
   &._error {
