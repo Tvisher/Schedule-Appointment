@@ -6,6 +6,10 @@ import Swiper, {
 import AirDatepicker from 'air-datepicker';
 import localeEn from 'air-datepicker/locale/en.js';
 
+//глобальное обьявление тултипов
+import tippy from 'tippy.js';
+window.tippy = tippy;
+
 //родительский элемент для всего виджета/блока и формой
 const widgetTemplateParent = document.querySelector('#widget-template');
 // первый шаг формы
@@ -201,4 +205,37 @@ function checkWindowSize(e) {
 }
 checkWindowSize();
 window.addEventListener('resize', checkWindowSize);
+
+
+window.updatetLibraries = function () {
+    //Тултипы при наведении на иконку (!)
+    tippy('[data-tippy-content]');
+    //Анимация инпутов с placeholder выезжающим за пределы поля инпута
+    const stylinginputs = document.querySelectorAll('[data-styles-field]');
+    if (stylinginputs) {
+        stylinginputs.forEach(input => {
+            const inputpParent = input.parentNode;
+            const transformtext = inputpParent.querySelector('.styles-text');
+            input.addEventListener('focus', (e) => {
+                inputpParent.classList.add('focus');
+                transformtext && transformtext.classList.add('fixed');
+
+                input.addEventListener('blur', (e) => {
+                    const inputValue = e.target.value.trim();
+                    inputpParent.classList.remove('focus');
+                    if (inputValue.length === 0) {
+                        transformtext.classList.remove('fixed');
+                    }
+                }, { once: true });
+            });
+            //Добавление класса к инпуту если он заполнен
+            const inputValue = input.value.trim();
+            if (inputValue.length === 0) {
+                transformtext.classList.remove('fixed');
+            } else {
+                transformtext.classList.add('fixed');
+            }
+        });
+    }
+}
 

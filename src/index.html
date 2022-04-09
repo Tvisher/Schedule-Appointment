@@ -294,39 +294,54 @@
                         </div>
                         <div class="widget-template__labeles">
                             <label class="widget-template__label">
-                                <span class="widget-template__nameplate">First name</span>
-                                <input class="form-text-input" type="text" placeholder="John" required v-model="user.name">
+                                <div class="tooltip-wrapper">
+                                    <div class="styles-label">
+                                        <input class="styles-text-input" type="text" autocomplete="off" name="user-name" data-styles-field v-model="user.name">
+                                        <span class="styles-text">First name*</span>
+                                    </div>
+                                    <div class="tooltip-el" data-tippy-content="User name">!</div>
+                                </div>
                             </label>
                             <label class="widget-template__label">
-                                <span class="widget-template__nameplate">Last name</span>
-                                <input class="form-text-input" type="text" placeholder="Doe" required v-model="user.surname">
+                                <div class="tooltip-wrapper">
+                                    <div class="styles-label">
+                                        <input class="styles-text-input" type="text" autocomplete="off" name="user-surname" data-styles-field v-model="user.surname">
+                                        <span class="styles-text">Last name*</span>
+                                    </div>
+                                    <div class="tooltip-el" data-tippy-content="User last name">!</div>
+                                </div>
                             </label>
                             <label class="widget-template__label">
-                                <span class="widget-template__nameplate">E-mail</span>
-                                <input class="form-text-input" type="email" placeholder="example@gmail.com" required v-model="user.email">
+                                <div class="tooltip-wrapper">
+                                    <div class="styles-label">
+                                        <input class="styles-text-input" type="text" autocomplete="off" name="user-mail" data-styles-field v-model="user.email">
+                                        <span class="styles-text">E-mail*</span>
+                                    </div>
+                                    <div class="tooltip-el" data-tippy-content="User email">!</div>
+                                </div>
                             </label>
                             <label class="widget-template__label">
-                                <span class="widget-template__nameplate">Phone number</span>
-                                <input class="form-text-input" type="tel" placeholder="+9" required v-model="user.phone">
+                                <div class="tooltip-wrapper">
+                                    <div class="styles-label">
+                                        <textarea class="form-textarea" type="text" data-styles-field v-model="user.message"></textarea>
+                                        <span class="styles-text">Message</span>
+                                    </div>
+                                    <div class="tooltip-el" data-tippy-content="User message">!</div>
+                                </div>
                             </label>
-
-                            <label class="widget-template__label">
-                                <span class="widget-template__nameplate">Message</span>
-                                <textarea class="form-textarea" type="tel" v-model="user.message"></textarea>
-                            </label>
-                            <label class="widget-template__label">
+                            <label class="widget-template__label pointer">
                                 <input class="form-checkbox" type="checkbox" checked></input>
                                 <span class="checkbox-name">Lorem, ipsum dolor.</span>
                             </label>
-                            <label class="widget-template__label">
+                            <label class="widget-template__label pointer">
                                 <input class="form-checkbox" type="checkbox"></input>
                                 <span class="checkbox-name">Lorem, ipsum dolor.</span>
                             </label>
-                            <label class="widget-template__label">
+                            <label class="widget-template__label pointer">
                                 <input class="form-radio" type="radio" name="some-value"></input>
                                 <span class="radio-name">Lorem, ipsum dolor.</span>
                             </label>
-                            <label class="widget-template__label">
+                            <label class="widget-template__label pointer">
                                 <input class="form-radio" checked type="radio" name="some-value"></input>
                                 <span class="radio-name">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, magni.</span>
                             </label>
@@ -460,7 +475,7 @@
     </main>
     <footer class="footer"></footer>
     <script src="https://unpkg.com/vue@3"></script>
-    <script>
+    <script defer>
         Vue.createApp({
             data() {
                 return {
@@ -505,9 +520,16 @@
                 }
             },
             created() {
+                //Плавное появление элементов
                 window.addEventListener('load', () => {
                     document.querySelector('#widget-template').style.opacity = 1;
                 }, { once: true });
+            },
+            beforeUpdate() {
+                // Повторно инитим некоторые функции из app.js для нормальной их работы в связи c v-if 
+                setTimeout(() => {
+                    window.updatetLibraries();
+                }, 100);
             }
         }).mount('#app')
     </script>
