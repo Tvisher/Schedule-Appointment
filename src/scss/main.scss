@@ -1308,10 +1308,29 @@ li {
   }
 }
 
+.error-message {
+  display: none;
+  padding: 5px 0;
+  padding-left: 10px;
+  color: red;
+  font-size: 14px;
+}
+
 .widget-template__label {
   &.pointer {
     cursor: pointer;
 
+  }
+
+  &._error {
+    .styles-label {
+      border-color: red;
+
+    }
+
+    .error-message {
+      display: block;
+    }
   }
 
   position: relative;
