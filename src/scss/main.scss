@@ -1173,13 +1173,14 @@ li {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: column;
   margin: auto;
   margin-bottom: 42px;
 }
 
 .widget-template__label {
+  width: 100%;
   padding: 0 8px;
   flex: 0 0 100%;
   margin-bottom: 16px;
@@ -1323,7 +1324,7 @@ li {
 .widget-template__label {
   &.pointer {
     cursor: pointer;
-    // flex-basis: fit-content;
+    width: auto;
   }
 
   &._error {

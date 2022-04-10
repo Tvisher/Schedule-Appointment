@@ -2780,13 +2780,14 @@ button {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: column;
   margin: auto;
   margin-bottom: 42px;
 }
 
 .widget-template__label {
+  width: 100%;
   padding: 0 8px;
   flex: 0 0 100%;
   margin-bottom: 16px;
@@ -2926,6 +2927,7 @@ button {
 
 .widget-template__label.pointer {
   cursor: pointer;
+  width: auto;
 }
 
 .widget-template__label._error .styles-label {
