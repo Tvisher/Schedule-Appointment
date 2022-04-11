@@ -316,6 +316,16 @@
                             <label class="widget-template__label">
                                 <div class="tooltip-wrapper">
                                     <div class="styles-label">
+                                        <input class="styles-text-input" type="text" autocomplete="off" name="user-phone" data-styles-field v-model="user.phone">
+                                        <span class="styles-text">Phone*</span>
+                                    </div>
+                                    <div class="tooltip-el" data-tippy-content="User Phone">!</div>
+                                </div>
+                                <span class="error-message">Some error</span>
+                            </label>
+                            <label class="widget-template__label">
+                                <div class="tooltip-wrapper">
+                                    <div class="styles-label">
                                         <input class="styles-text-input" type="text" autocomplete="off" name="user-mail" data-styles-field v-model="user.email">
                                         <span class="styles-text">E-mail*</span>
                                     </div>
