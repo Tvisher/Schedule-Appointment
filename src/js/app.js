@@ -5,6 +5,7 @@ import Swiper, {
 } from 'swiper';
 import AirDatepicker from 'air-datepicker';
 import localeEn from 'air-datepicker/locale/en.js';
+import IMask from 'imask';
 
 //глобальное обьявление тултипов
 import tippy from 'tippy.js';
@@ -235,6 +236,14 @@ window.updatetLibraries = function () {
             } else {
                 transformtext.classList.add('fixed');
             }
+        });
+    }
+
+    // Добавление маски на номер телефона
+    const phoneMaskElem = document.querySelector('[data-phone-field]')
+    if (phoneMaskElem) {
+        const iMask = IMask(phoneMaskElem, {
+            mask: '000-000-0000',
         });
     }
 }
