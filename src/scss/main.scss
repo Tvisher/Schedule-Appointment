@@ -860,10 +860,15 @@ li {
   font-weight: 600;
   font-size: 16px;
   color: $brand-gray;
-  transition: color .3s ease;
+  transition: color .3s ease, transform .3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  padding: 5px 0;
 
   &:hover {
     color: $brand-blue;
+    transform: scale3d(1.1, 1.1, 1.1) translate3d(0, 0, 0);
   }
 }
 

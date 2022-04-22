@@ -2692,11 +2692,16 @@ button {
   font-weight: 600;
   font-size: 16px;
   color: #4C5563;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  padding: 5px 0;
 }
 
 .back-btn:hover {
   color: #2371E4;
+  transform: scale3d(1.1, 1.1, 1.1) translate3d(0, 0, 0);
 }
 
 .spinner {
