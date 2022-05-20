@@ -2210,7 +2210,7 @@ button {
 }
 
 .widget-template__slider .swiper-slide:hover:not(.active) {
-  background-color: #F0F5F6;
+  background-color: #f0f5f6;
   color: #2371E4;
 }
 
@@ -2304,7 +2304,7 @@ button {
 
 .widget-template__warning {
   color: #4C5563;
-  background: #FFFCC0;
+  background: #fffcc0;
   border-radius: 4px;
   padding: 6px 12px;
   max-width: 790px;
@@ -2319,7 +2319,7 @@ button {
 
 .widget-template__warning a {
   display: inline;
-  color: #1F2B3D;
+  color: #1f2b3d;
 }
 
 .widget-template__warning a:hover {
@@ -2371,7 +2371,7 @@ button {
 .widget-template__nameplate {
   font-weight: 500;
   font-size: 14px;
-  color: #A6AAB1;
+  color: #a6aab1;
 }
 
 .widget-template__nameplate.step {
@@ -2415,7 +2415,7 @@ button {
 
 #widget-datapicker {
   border: 1px solid #E1EAED;
-  border-color: #BEC4CF;
+  border-color: #bec4cf;
   padding: 14px 20px;
   font-weight: 500;
   font-size: 16px;
@@ -2468,7 +2468,7 @@ button {
   height: 100%;
   will-change: transform;
   transform: translate3d(0, 0, 0);
-  padding: 6px;
+  padding: 6px 4px;
   text-align: center;
   border-radius: 4px;
   border: 1px solid #E1EAED;
@@ -2478,7 +2478,7 @@ button {
 .widget-template__shedule .shedule__block-list li {
   flex: 0 0 20%;
   border-radius: 4px;
-  padding: 4px;
+  padding: 4px 3px;
   position: relative;
 }
 
@@ -2495,7 +2495,7 @@ button {
 
 .widget-template__shedule .shedule-input:hover + .shedule-time {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
-  background-color: #F0F5F6;
+  background-color: #f0f5f6;
   color: #2371E4;
 }
 
@@ -2544,7 +2544,7 @@ button {
 
 .air-datepicker-nav--action svg path {
   transition: stroke 0.35s ease-in-out;
-  stroke: #BEC4CF;
+  stroke: #bec4cf;
 }
 
 .air-datepicker-nav--action:hover {
@@ -2559,7 +2559,7 @@ button {
 .air-datepicker-body--day-name {
   font-weight: 500;
   font-size: 14px;
-  color: #A6AAB1;
+  color: #a6aab1;
   text-transform: none;
 }
 
@@ -2620,7 +2620,7 @@ button {
 .air-datepicker .air-datepicker-nav--title i:hover,
 .air-datepicker .air-datepicker-button:hover,
 .air-datepicker .air-datepicker-cell:hover {
-  background-color: #F0F5F6;
+  background-color: #f0f5f6;
 }
 
 .air-datepicker .air-datepicker-cell.-selected-.-current-,
@@ -2855,15 +2855,15 @@ button {
 }
 
 .ico-wrapper.true {
-  background-color: #C0FFD2;
+  background-color: #c0ffd2;
 }
 
 .ico-wrapper.false {
-  background-color: #FFDADA;
+  background-color: #ffdada;
 }
 
 .ico-wrapper.warn {
-  background-color: #FFFCC0;
+  background-color: #fffcc0;
 }
 
 .info-table {
@@ -2876,7 +2876,7 @@ button {
 }
 
 .info-table.cancel * {
-  color: #A6AAB1;
+  color: #a6aab1;
 }
 
 .info-table .location {
@@ -3044,8 +3044,8 @@ button {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 2px solid #BEC4CF;
-  color: #BEC4CF;
+  border: 2px solid #bec4cf;
+  color: #bec4cf;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3067,7 +3067,7 @@ button {
 }
 
 .tippy-box {
-  background: #1F2B3D;
+  background: #1f2b3d;
   border-radius: 5px;
 }
 
@@ -3077,13 +3077,13 @@ button {
 }
 
 .tippy-arrow {
-  color: #1F2B3D;
+  color: #1f2b3d;
 }
 
 .styles-label {
   position: relative;
   border-radius: 5px;
-  border: 1px solid #BEC4CF;
+  border: 1px solid #bec4cf;
   padding: 20px 10px 8px 20px;
   min-height: 50px;
   max-width: 576px;
@@ -3097,7 +3097,7 @@ button {
 
 .styles-label .styles-text {
   font-weight: 500;
-  color: #4C5563;
+  color: #4c5563;
   font-size: 14px;
   position: absolute;
   left: 20px;
@@ -3109,7 +3109,7 @@ button {
 .styles-label .styles-text.fixed {
   font-size: 12px;
   top: 5px;
-  color: #A6AAB1;
+  color: #a6aab1;
 }
 
 .styles-label .styles-text-input {

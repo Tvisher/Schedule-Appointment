@@ -4,7 +4,6 @@
 @import "utils/vars";
 @import "vendors/vendors";
 
-
 .unselectable {
   -webkit-touch-callout: none;
   /* iOS Safari */
@@ -20,7 +19,6 @@
   /* Non-prefixed version, currently
                                   not supported by any browser */
 }
-
 
 @keyframes whiteShadow {
   0% {
@@ -45,7 +43,6 @@
     opacity: 1;
   }
 }
-
 
 html {
   scroll-behavior: smooth;
@@ -83,7 +80,6 @@ body {
 
   &.hidden {
     overflow: hidden;
-
   }
 }
 
@@ -128,8 +124,6 @@ li {
   color: #fff;
 }
 
-
-
 .section__title {
   font-size: 40px;
   font-weight: 800;
@@ -161,10 +155,9 @@ li {
   }
 
   &.small {
-    max-width: 984px
+    max-width: 984px;
   }
 }
-
 
 @import "./common.scss";
 
@@ -188,7 +181,7 @@ li {
   max-width: 944px;
   margin: auto;
   opacity: 0;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .widget-template__modal {
@@ -279,11 +272,8 @@ li {
 
   .swiper-button-prev,
   .swiper-button-next {
-    transition: opacity .3s ease,
-      transform .3s ease,
-      box-shadow .3s ease,
-      border-color .3s ease,
-      background-color .3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease,
+      border-color 0.3s ease, background-color 0.3s ease;
     margin: 0;
     width: 32px;
     height: 32px;
@@ -293,7 +283,7 @@ li {
     position: static;
 
     path {
-      transition: stroke .3s ease;
+      transition: stroke 0.3s ease;
     }
 
     &:hover {
@@ -337,7 +327,7 @@ li {
 
   &:before {
     position: absolute;
-    content: '';
+    content: "";
     width: 100%;
     height: 100%;
     left: 0;
@@ -356,13 +346,12 @@ li {
     border-radius: 4px;
     padding: 13px 17px 8px;
     color: $mainFontColor;
-    transition: background-color .5s ease, width .3s ease, color .5s ease;
+    transition: background-color 0.5s ease, width 0.3s ease, color 0.5s ease;
     width: 82px;
     background-color: #fff;
 
     &:hover:not(.active) {
-      background-color: #F0F5F6;
-      ;
+      background-color: #f0f5f6;
       color: $brand-blue;
 
       .date-slide__body {
@@ -396,20 +385,20 @@ li {
     font-size: 18px;
 
     .date-slide-full-day {
-      transition: opacity .3s ease-in-out 0.2s;
+      transition: opacity 0.3s ease-in-out 0.2s;
       display: none;
       opacity: 0;
     }
 
     .date-slide-short-day {
-      transition: opacity .3s ease-in-out 0.2s;
+      transition: opacity 0.3s ease-in-out 0.2s;
       display: block;
       opacity: 1;
     }
   }
 
   .date-slide__body {
-    transition: color .5s ease;
+    transition: color 0.5s ease;
     font-weight: 500;
     font-size: 14px;
     display: flex;
@@ -451,7 +440,6 @@ li {
     align-items: center;
     flex-direction: row;
   }
-
 }
 
 .widget-template__body {
@@ -460,7 +448,7 @@ li {
 
 .widget-template__warning {
   color: $brand-gray;
-  background: #FFFCC0;
+  background: #fffcc0;
   border-radius: 4px;
   padding: 6px 12px;
   max-width: 790px;
@@ -474,7 +462,7 @@ li {
 
   a {
     display: inline;
-    color: #1F2B3D;
+    color: #1f2b3d;
 
     &:hover {
       text-decoration: underline;
@@ -487,7 +475,6 @@ li {
   height: 24px;
   width: 24px;
   margin-left: 5px;
-
 }
 
 .litle-title {
@@ -528,7 +515,7 @@ li {
 .widget-template__nameplate {
   font-weight: 500;
   font-size: 14px;
-  color: #A6AAB1;
+  color: #a6aab1;
 
   &.step {
     color: $brand-gray;
@@ -546,7 +533,7 @@ li {
   &::before {
     cursor: pointer;
     position: absolute;
-    content: '';
+    content: "";
     right: 14px;
     top: 50%;
     transform: translateY(-50%);
@@ -573,7 +560,7 @@ li {
 
 #widget-datapicker {
   border: $border-base;
-  border-color: #BEC4CF;
+  border-color: #bec4cf;
   padding: 14px 20px;
   font-weight: 500;
   font-size: 16px;
@@ -607,7 +594,7 @@ li {
     margin-bottom: 20px;
     flex: 0 0 50%;
     padding: 0px 8px;
-    animation: fromOpacity .3s ease;
+    animation: fromOpacity 0.3s ease;
   }
 
   .shedule__block-list {
@@ -624,34 +611,33 @@ li {
       height: 100%;
       will-change: transform;
       transform: translate3d(0, 0, 0);
-      padding: 6px;
+      padding: 6px 4px;
       text-align: center;
       border-radius: 4px;
       border: $border-base;
-      transition: background-color .3s ease-in-out, color .3s ease-in-out, box-shadow .3s ease-in-out, border-color .3s ease-in-out;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out,
+        box-shadow 0.3s ease-in-out, border-color 0.3s ease-in-out;
     }
 
     li {
       flex: 0 0 20%;
       border-radius: 4px;
-      padding: 4px;
+      padding: 4px 3px;
       position: relative;
     }
-
-    ;
   }
 
   .shedule-input {
     &:hover {
-      &+.shedule-time {
+      & + .shedule-time {
         box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
-        background-color: #F0F5F6;
+        background-color: #f0f5f6;
         color: $brand-blue;
       }
     }
 
     &:active {
-      &+.shedule-time {
+      & + .shedule-time {
         box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0);
       }
     }
@@ -659,7 +645,7 @@ li {
     &[disabled] {
       pointer-events: none;
 
-      &+.shedule-time {
+      & + .shedule-time {
         opacity: 0.4;
       }
     }
@@ -673,15 +659,13 @@ li {
     height: 100%;
     opacity: 0;
 
-    &:checked+.shedule-time {
+    &:checked + .shedule-time {
       background-color: $brand-blue;
       border-color: $brand-blue;
       color: #fff;
     }
   }
 }
-
-
 
 .air-datepicker-nav--title,
 .air-datepicker-nav--title i {
@@ -692,7 +676,7 @@ li {
 }
 
 .air-datepicker-nav--action {
-  transition: background-color .35s ease-in-out, border-color .35s ease-in-out;
+  transition: background-color 0.35s ease-in-out, border-color 0.35s ease-in-out;
   overflow: hidden;
   border-radius: 50%;
   border: $border-base;
@@ -707,8 +691,8 @@ li {
     transform: translate(-1px, -3px);
 
     path {
-      transition: stroke .35s ease-in-out;
-      stroke: #BEC4CF;
+      transition: stroke 0.35s ease-in-out;
+      stroke: #bec4cf;
     }
   }
 
@@ -725,7 +709,7 @@ li {
 .air-datepicker-body--day-name {
   font-weight: 500;
   font-size: 14px;
-  color: #A6AAB1;
+  color: #a6aab1;
   text-transform: none;
 }
 
@@ -778,10 +762,10 @@ li {
   .air-datepicker-nav--title i,
   .air-datepicker-button,
   .air-datepicker-cell {
-    transition: background-color .35s ease, color .35s ease;
+    transition: background-color 0.35s ease, color 0.35s ease;
 
     &:hover {
-      background-color: #F0F5F6;
+      background-color: #f0f5f6;
     }
   }
 
@@ -828,7 +812,7 @@ li {
   align-items: center;
 
   .next-step {
-    transition: opacity .3s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
     margin-left: auto;
     display: flex;
     align-items: center;
@@ -846,7 +830,6 @@ li {
 }
 
 .selected-date-wrapper {
-
   margin-right: 22px;
   font-weight: 500;
   font-size: 14px;
@@ -860,7 +843,7 @@ li {
   font-weight: 600;
   font-size: 16px;
   color: $brand-gray;
-  transition: color .3s ease, transform .3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
   will-change: transform;
   backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -871,8 +854,6 @@ li {
     transform: scale3d(1.1, 1.1, 1.1) translate3d(0, 0, 0);
   }
 }
-
-
 
 .spinner {
   animation: rotate 2s linear infinite;
@@ -889,7 +870,6 @@ li {
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;
   }
-
 }
 
 @keyframes rotate {
@@ -915,14 +895,12 @@ li {
   }
 }
 
-
-
 .render-container-wrapper {
   position: relative;
 }
 
 .preloader-spin {
-  transition: opacity .2s ease, visibility .2s ease;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 
   &.show {
     opacity: 1;
@@ -972,7 +950,6 @@ li {
     margin-left: 0;
   }
 }
-
 
 @media (max-width: 768px) {
   .widget-template__slider {
@@ -1141,7 +1118,6 @@ li {
 }
 
 @media (max-width: 360px) {
-
   .widget-template__slider-wrapper,
   .render-container-wrapper {
     margin-right: -18px;
@@ -1170,7 +1146,7 @@ li {
     margin-right: 20px;
     width: 20px;
     height: 22px;
-    content: '';
+    content: "";
     display: block;
     background-repeat: no-repeat;
     background-size: contain;
@@ -1213,10 +1189,10 @@ li {
   &::after {
     flex: 0 0 auto;
     display: block;
-    content: '';
+    content: "";
     width: 31px;
     height: 31px;
-    background-image: url('../img/calendar-ico.png');
+    background-image: url("../img/calendar-ico.png");
     background-repeat: no-repeat;
     background-size: contain;
     margin-left: 13px;
@@ -1247,21 +1223,21 @@ li {
   border-radius: 50%;
 
   &.true {
-    background-color: #C0FFD2;
+    background-color: #c0ffd2;
   }
 
   &.false {
-    background-color: #FFDADA;
+    background-color: #ffdada;
   }
 
   &.warn {
-    background-color: #FFFCC0;
+    background-color: #fffcc0;
   }
 }
 
 .info-table {
   &.cancel * {
-    color: #A6AAB1;
+    color: #a6aab1;
   }
 
   margin: auto;
@@ -1340,7 +1316,6 @@ li {
   &._error {
     .styles-label {
       border-color: red;
-
     }
 
     .error-message {
@@ -1365,7 +1340,7 @@ li {
     height: 100%;
     opacity: 0;
 
-    &:checked+.checkbox-name {
+    &:checked + .checkbox-name {
       &::before {
         background: $brand-blue;
         border-color: $brand-blue;
@@ -1394,11 +1369,11 @@ li {
       background-repeat: no-repeat;
       background-size: contain;
       opacity: 0;
-      transition: opacity .3s ease;
+      transition: opacity 0.3s ease;
     }
 
     &::before {
-      transition: background-color .3s ease, border-color .3s ease;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
       position: absolute;
       content: "";
       left: 0;
@@ -1419,7 +1394,7 @@ li {
     height: 100%;
     opacity: 0;
 
-    &:checked+.radio-name {
+    &:checked + .radio-name {
       &::before {
         border-color: $brand-blue;
         border-width: 5px;
@@ -1432,7 +1407,7 @@ li {
     position: relative;
 
     &::before {
-      transition: border-color .3s ease, border-width 0.15s linear;
+      transition: border-color 0.3s ease, border-width 0.15s linear;
       position: absolute;
       content: "";
       left: 0;
@@ -1446,22 +1421,20 @@ li {
   }
 }
 
-
-
 .tooltip-el {
   margin-left: 10px;
   cursor: help;
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 2px solid #BEC4CF;
-  color: #BEC4CF;
+  border: 2px solid #bec4cf;
+  color: #bec4cf;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 600;
   flex-shrink: 0;
-  transition: color .3s ease-in-out, border-color .3s ease-in-out;
+  transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 
   &:hover {
     color: $brand-blue;
@@ -1478,7 +1451,7 @@ li {
 }
 
 .tippy-box {
-  background: #1F2B3D;
+  background: #1f2b3d;
   border-radius: 5px;
 }
 
@@ -1488,19 +1461,18 @@ li {
 }
 
 .tippy-arrow {
-  color: #1F2B3D;
+  color: #1f2b3d;
 }
-
 
 .styles-label {
   position: relative;
   border-radius: 5px;
-  border: 1px solid #BEC4CF;
+  border: 1px solid #bec4cf;
   padding: 20px 10px 8px 20px;
   min-height: 50px;
   max-width: 576px;
   width: 100%;
-  transition: border-color .3s ease;
+  transition: border-color 0.3s ease;
 
   &.focus {
     border-color: $brand-blue;
@@ -1508,21 +1480,19 @@ li {
 
   .styles-text {
     font-weight: 500;
-    color: #4C5563;
+    color: #4c5563;
     font-size: 14px;
     position: absolute;
     left: 20px;
     top: 17px;
     z-index: 1;
-    transition: color .2s ease-in,
-      top .2s ease-in,
-      font-size .2s ease-in,
-      transform .2s ease-in;
+    transition: color 0.2s ease-in, top 0.2s ease-in, font-size 0.2s ease-in,
+      transform 0.2s ease-in;
 
     &.fixed {
       font-size: 12px;
       top: 5px;
-      color: #A6AAB1;
+      color: #a6aab1;
     }
   }
 
