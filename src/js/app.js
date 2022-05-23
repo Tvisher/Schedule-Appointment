@@ -212,32 +212,32 @@ window.updatetLibraries = function () {
     //Тултипы при наведении на иконку (!)
     tippy('[data-tippy-content]');
     //Анимация инпутов с placeholder выезжающим за пределы поля инпута
-    const stylinginputs = document.querySelectorAll('[data-styles-field]');
-    if (stylinginputs) {
-        stylinginputs.forEach(input => {
-            const inputpParent = input.parentNode;
-            const transformtext = inputpParent.querySelector('.styles-text');
-            input.addEventListener('focus', (e) => {
-                inputpParent.classList.add('focus');
-                transformtext && transformtext.classList.add('fixed');
+    // const stylinginputs = document.querySelectorAll('[data-styles-field]');
+    // if (stylinginputs) {
+    //     stylinginputs.forEach(input => {
+    //         const inputpParent = input.parentNode;
+    //         const transformtext = inputpParent.querySelector('.styles-text');
+    //         input.addEventListener('focus', (e) => {
+    //             inputpParent.classList.add('focus');
+    //             transformtext && transformtext.classList.add('fixed');
 
-                input.addEventListener('blur', (e) => {
-                    const inputValue = e.target.value.trim();
-                    inputpParent.classList.remove('focus');
-                    if (inputValue.length === 0) {
-                        transformtext.classList.remove('fixed');
-                    }
-                }, { once: true });
-            });
-            //Добавление класса к инпуту если он заполнен
-            const inputValue = input.value.trim();
-            if (inputValue.length === 0) {
-                transformtext.classList.remove('fixed');
-            } else {
-                transformtext.classList.add('fixed');
-            }
-        });
-    }
+    //             input.addEventListener('blur', (e) => {
+    //                 const inputValue = e.target.value.trim();
+    //                 inputpParent.classList.remove('focus');
+    //                 if (inputValue.length === 0) {
+    //                     transformtext.classList.remove('fixed');
+    //                 }
+    //             }, { once: true });
+    //         });
+    //         //Добавление класса к инпуту если он заполнен
+    //         const inputValue = input.value.trim();
+    //         if (inputValue.length === 0) {
+    //             transformtext.classList.remove('fixed');
+    //         } else {
+    //             transformtext.classList.add('fixed');
+    //         }
+    //     });
+    // }
 
     // Добавление маски на номер телефона
     const phoneMaskElem = document.querySelector('[data-phone-field]')

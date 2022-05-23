@@ -1506,3 +1506,10 @@ li {
     height: 100%;
   }
 }
+
+[data-styles-field]:not(:placeholder-shown) ~ .styles-text,
+[data-styles-field]:focus ~ .styles-text {
+  font-size: 12px;
+  top: 5px;
+  color: #a6aab1;
+}
