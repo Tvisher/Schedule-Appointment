@@ -2267,6 +2267,7 @@ button {
 
 .widget-template__slider .date-slide__body span {
   margin-right: 5px;
+  white-space: nowrap;
 }
 
 .widget-template__head {
@@ -2442,7 +2443,7 @@ button {
   margin-left: -8px;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
@@ -3127,6 +3128,11 @@ button {
   font-size: 12px;
   top: 5px;
   color: #a6aab1;
+}
+
+.swiper-slide[data-enable=false] {
+  background: rgb(109, 107, 107);
+  opacity: 0.3;
 }
 
 @media screen and (max-width: 1440px) {

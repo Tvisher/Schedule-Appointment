@@ -408,6 +408,7 @@ li {
 
     span {
       margin-right: 5px;
+      white-space: nowrap;
     }
   }
 }
@@ -587,7 +588,7 @@ li {
   margin-left: -8px;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
 
   .shedule__block {
@@ -1512,4 +1513,9 @@ li {
   font-size: 12px;
   top: 5px;
   color: #a6aab1;
+}
+
+.swiper-slide[data-enable="false"] {
+  background: rgba(109, 107, 107, 1);
+  opacity: 0.3;
 }
