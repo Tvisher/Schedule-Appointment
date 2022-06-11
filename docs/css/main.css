@@ -3149,6 +3149,65 @@ button {
   margin-bottom: 15px;
 }
 
+.toast-container {
+  width: 100%;
+  max-width: 350px;
+  position: absolute;
+  z-index: 1090;
+  pointer-events: none;
+  bottom: 0 !important;
+  right: 0 !important;
+  padding: 1rem !important;
+}
+
+.toast-container .toast {
+  width: 100%;
+  font-size: 1em;
+  pointer-events: auto;
+  background-color: rgb(255, 255, 255);
+  background-clip: padding-box;
+  border: 1px solid rgb(194, 188, 188);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+}
+
+.toast-container .toast-time {
+  font-size: 12px;
+}
+
+.toast-container .toast-header {
+  padding: 0.8rem 1rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgb(228, 215, 215);
+}
+
+.toast-container .toast-header .toast-title {
+  flex: 0 0 50%;
+  margin-right: auto;
+  color: #1F2B3D;
+}
+
+.toast-container .toast-body {
+  font-size: 14px;
+  padding: 1rem;
+  padding-top: 10px;
+}
+
+.toast-container .btn-close {
+  box-sizing: content-box;
+  width: 1em;
+  height: 1em;
+  padding: 0.25em 0.25em;
+  margin-left: 10px;
+  color: #000;
+  background: transparent url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") center/1em auto no-repeat;
+  border: 0;
+  border-radius: 0.375rem;
+  opacity: 0.5;
+}
+
 @media screen and (max-width: 1440px) {
   html {
     font-size: 16px;
