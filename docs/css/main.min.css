@@ -2494,7 +2494,7 @@ button {
   opacity: 0;
 }
 
-.widget-template__shedule .shedule-input:hover + .shedule-time {
+.widget-template__shedule .shedule-input:not(:disabled):hover + .shedule-time {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
   background-color: #f0f5f6;
   color: #2371E4;
@@ -2504,11 +2504,11 @@ button {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0);
 }
 
-.widget-template__shedule .shedule-input[disabled] {
-  pointer-events: none;
+.widget-template__shedule .shedule-input:disabled {
+  cursor: not-allowed !important;
 }
 
-.widget-template__shedule .shedule-input[disabled] + .shedule-time {
+.widget-template__shedule .shedule-input:disabled + .shedule-time {
   opacity: 0.4;
 }
 
@@ -2757,9 +2757,9 @@ button {
   border-radius: 4px;
   background: #fff;
   position: absolute;
-  left: 0;
+  left: -2px;
   top: 0;
-  width: 100%;
+  width: calc(100% + 2px);
   height: 100%;
 }
 
@@ -3133,6 +3133,20 @@ button {
 .swiper-slide[data-enable=false] {
   background: rgb(109, 107, 107);
   opacity: 0.3;
+}
+
+.param-elem._error .tooltip-wrapper {
+  color: red;
+}
+
+.param-elem._error .error-message {
+  display: block;
+  margin-top: -10px;
+  margin-bottom: 16px;
+}
+
+.param-elem .tooltip-wrapper {
+  margin-bottom: 15px;
 }
 
 @media screen and (max-width: 1440px) {
