@@ -1538,7 +1538,7 @@ li {
 .toast-container {
   width: 100%;
   max-width: 350px;
-  position: absolute;
+  position: fixed;
   z-index: 1090;
   pointer-events: none;
   bottom: 0 !important;
