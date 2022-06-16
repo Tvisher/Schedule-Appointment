@@ -382,11 +382,13 @@ th {
 }
 
 .swiper-horizontal.swiper-css-mode > .swiper-wrapper {
-  scroll-snap-type: x mandatory;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
 }
 
 .swiper-vertical.swiper-css-mode > .swiper-wrapper {
-  scroll-snap-type: y mandatory;
+  -ms-scroll-snap-type: y mandatory;
+      scroll-snap-type: y mandatory;
 }
 
 .swiper-centered > .swiper-wrapper::before {
@@ -396,7 +398,8 @@ th {
 }
 
 .swiper-centered.swiper-horizontal > .swiper-wrapper > .swiper-slide:first-child {
-  margin-inline-start: var(--swiper-centered-offset-before);
+  -webkit-margin-start: var(--swiper-centered-offset-before);
+          margin-inline-start: var(--swiper-centered-offset-before);
 }
 
 .swiper-centered.swiper-horizontal > .swiper-wrapper::before {
@@ -406,7 +409,8 @@ th {
 }
 
 .swiper-centered.swiper-vertical > .swiper-wrapper > .swiper-slide:first-child {
-  margin-block-start: var(--swiper-centered-offset-before);
+  -webkit-margin-before: var(--swiper-centered-offset-before);
+          margin-block-start: var(--swiper-centered-offset-before);
 }
 
 .swiper-centered.swiper-vertical > .swiper-wrapper::before {
@@ -575,7 +579,8 @@ button.swiper-pagination-bullet {
   padding: 0;
   box-shadow: none;
   -webkit-appearance: none;
-  appearance: none;
+  -moz-appearance: none;
+       appearance: none;
 }
 
 .swiper-pagination-clickable .swiper-pagination-bullet {
@@ -739,7 +744,8 @@ button.swiper-pagination-bullet {
 .swiper-zoom-container > svg {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .swiper-slide-zoomed {
@@ -763,7 +769,8 @@ button.swiper-pagination-bullet {
 }
 
 .swiper-slide-visible .swiper-lazy-preloader {
-  animation: swiper-preloader-spin 1s infinite linear;
+  -webkit-animation: swiper-preloader-spin 1s infinite linear;
+          animation: swiper-preloader-spin 1s infinite linear;
 }
 
 .swiper-lazy-preloader-white {
@@ -772,6 +779,12 @@ button.swiper-pagination-bullet {
 
 .swiper-lazy-preloader-black {
   --swiper-preloader-color: #000;
+}
+
+@-webkit-keyframes swiper-preloader-spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes swiper-preloader-spin {
@@ -1070,7 +1083,9 @@ button.swiper-pagination-bullet {
 }
 
 .air-datepicker-body--day-names {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: (var(--adp-day-cell-width))[7];
   grid-template-columns: repeat(7, var(--adp-day-cell-width));
   margin: 8px 0 3px;
 }
@@ -1087,20 +1102,24 @@ button.swiper-pagination-bullet {
 }
 
 .air-datepicker-body--cells {
+  display: -ms-grid;
   display: grid;
 }
 
 .air-datepicker-body--cells.-days- {
+  -ms-grid-columns: (var(--adp-day-cell-width))[7];
   grid-template-columns: repeat(7, var(--adp-day-cell-width));
   grid-auto-rows: var(--adp-day-cell-height);
 }
 
 .air-datepicker-body--cells.-months- {
+  -ms-grid-columns: (1fr)[3];
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: var(--adp-month-cell-height);
 }
 
 .air-datepicker-body--cells.-years- {
+  -ms-grid-columns: (1fr)[4];
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: var(--adp-year-cell-height);
 }
@@ -1131,7 +1150,8 @@ button.swiper-pagination-bullet {
   border-radius: var(--adp-border-radius);
   -webkit-user-select: none;
   -moz-user-select: none;
-  user-select: none;
+  -ms-user-select: none;
+      user-select: none;
 }
 
 .air-datepicker-nav--action:hover {
@@ -1182,6 +1202,7 @@ button.swiper-pagination-bullet {
 }
 
 .air-datepicker-buttons {
+  display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
@@ -1222,8 +1243,11 @@ button.swiper-pagination-bullet {
 }
 
 .air-datepicker-time {
+  display: -ms-grid;
   display: grid;
   grid-template-columns: -webkit-max-content 1fr;
+  -ms-grid-columns: -webkit-max-content 1fr;
+  -ms-grid-columns: max-content 1fr;
   grid-template-columns: max-content 1fr;
   grid-column-gap: 12px;
   align-items: center;
@@ -1501,11 +1525,15 @@ button.swiper-pagination-bullet {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: var(--adp-border-radius);
   box-sizing: content-box;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
+  -ms-grid-rows: (-webkit-max-content)[4];
   grid-template-rows: repeat(4, -webkit-max-content);
+  -ms-grid-rows: (max-content)[4];
   grid-template-rows: repeat(4, max-content);
-  grid-template-areas: var(--adp-grid-areas);
+      grid-template-areas: var(--adp-grid-areas);
   font-family: var(--adp-font-family), sans-serif;
   font-size: var(--adp-font-size);
   color: var(--adp-color);
@@ -1844,7 +1872,6 @@ button.swiper-pagination-bullet {
   /* iOS Safari */
   -webkit-user-select: none;
   /* Chrome/Safari/Opera */
-  -khtml-user-select: none;
   /* Konqueror */
   -moz-user-select: none;
   /* Firefox */
@@ -1853,6 +1880,20 @@ button.swiper-pagination-bullet {
   user-select: none;
   /* Non-prefixed version, currently
                                   not supported by any browser */
+}
+
+@-webkit-keyframes whiteShadow {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 @keyframes whiteShadow {
@@ -1866,6 +1907,16 @@ button.swiper-pagination-bullet {
 
   100% {
     opacity: 0;
+  }
+}
+
+@-webkit-keyframes fromOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
@@ -1942,6 +1993,11 @@ li {
   padding: 0;
 }
 
+*::-moz-selection {
+  background: #2371E4;
+  color: #fff;
+}
+
 *::selection {
   background: #2371E4;
   color: #fff;
@@ -1974,6 +2030,8 @@ li {
   font-size: 16px;
   font-family: "Montserrat";
   display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   align-items: center;
   justify-content: center;
@@ -2198,7 +2256,8 @@ button {
 
 .widget-template__slider .swiper-slide {
   overflow: hidden;
-  animation: fromOpacity 1.5s ease-in-out;
+  -webkit-animation: fromOpacity 1.5s ease-in-out;
+          animation: fromOpacity 1.5s ease-in-out;
   will-change: auto;
   cursor: pointer;
   border-radius: 4px;
@@ -2451,7 +2510,8 @@ button {
   margin-bottom: 20px;
   flex: 0 0 50%;
   padding: 0px 8px;
-  animation: fromOpacity 0.3s ease;
+  -webkit-animation: fromOpacity 0.3s ease;
+          animation: fromOpacity 0.3s ease;
 }
 
 .widget-template__shedule .shedule__block-list {
@@ -2539,7 +2599,8 @@ button {
 .air-datepicker-nav--action svg {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   transform: translate(-1px, -3px);
 }
 
@@ -2630,6 +2691,8 @@ button {
 }
 
 .air-datepicker .air-datepicker-button {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   margin: auto;
   padding: 5px 15px;
@@ -2695,7 +2758,8 @@ button {
   color: #4C5563;
   transition: color 0.3s ease, transform 0.3s ease;
   will-change: transform;
-  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   -webkit-font-smoothing: subpixel-antialiased;
   padding: 5px 0;
 }
@@ -2706,7 +2770,8 @@ button {
 }
 
 .spinner {
-  animation: rotate 2s linear infinite;
+  -webkit-animation: rotate 2s linear infinite;
+          animation: rotate 2s linear infinite;
   z-index: 2;
   position: absolute;
   top: 50%;
@@ -2719,12 +2784,36 @@ button {
 .spinner .path {
   stroke: #2371E4;
   stroke-linecap: round;
-  animation: dash 1.5s ease-in-out infinite;
+  -webkit-animation: dash 1.5s ease-in-out infinite;
+          animation: dash 1.5s ease-in-out infinite;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes rotate {
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
   }
 }
 
@@ -2819,13 +2908,15 @@ button {
   margin-left: auto;
 }
 
+.no-webp .calendar-link::after {
+  background-image: url("../img/calendar-ico.png"); }
+
 .calendar-link::after {
   flex: 0 0 auto;
   display: block;
   content: "";
   width: 31px;
   height: 31px;
-  background-image: url("../img/calendar-ico.png");
   background-repeat: no-repeat;
   background-size: contain;
   margin-left: 13px;
@@ -2870,7 +2961,9 @@ button {
 .info-table {
   margin: auto;
   max-width: 729px;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: (1fr)[3];
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0px;
   margin-bottom: 50px;
@@ -2881,7 +2974,9 @@ button {
 }
 
 .info-table .location {
-  grid-column-start: 1;
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  -ms-grid-column-span: 2;
   grid-column-end: 3;
   margin: 0;
   border: 1px solid #E1EAED;
@@ -2892,7 +2987,9 @@ button {
 
 .info-table .location.head-info {
   display: flex;
-  grid-column-start: 3;
+  -ms-grid-column: 3;
+      grid-column-start: 3;
+  -ms-grid-column-span: 0;
   grid-column-end: 3;
   border: 1px solid #E1EAED;
   border-bottom: none;
@@ -3123,6 +3220,18 @@ button {
   height: 100%;
 }
 
+[data-styles-field]:not(:-moz-placeholder-shown) ~ .styles-text {
+  font-size: 12px;
+  top: 5px;
+  color: #a6aab1;
+}
+
+[data-styles-field]:not(:-ms-input-placeholder) ~ .styles-text {
+  font-size: 12px;
+  top: 5px;
+  color: #a6aab1;
+}
+
 [data-styles-field]:not(:placeholder-shown) ~ .styles-text,
 [data-styles-field]:focus ~ .styles-text {
   font-size: 12px;
@@ -3131,7 +3240,7 @@ button {
 }
 
 .swiper-slide[data-enable=false] {
-  background: rgb(109, 107, 107);
+  background: #6d6b6b;
   opacity: 0.3;
 }
 
@@ -3164,9 +3273,9 @@ button {
   width: 100%;
   font-size: 1em;
   pointer-events: auto;
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   background-clip: padding-box;
-  border: 1px solid rgb(194, 188, 188);
+  border: 1px solid #c2bcbc;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   overflow: hidden;
@@ -3181,7 +3290,7 @@ button {
   width: 100%;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgb(228, 215, 215);
+  border-bottom: 1px solid #e4d7d7;
 }
 
 .toast-container .toast-header .toast-title {
@@ -3195,7 +3304,7 @@ button {
   font-size: 14px;
   padding: 1rem;
   padding-top: 10px;
-  background-color: rgb(250, 250, 250);
+  background-color: #fafafa;
 }
 
 .toast-container .btn-close {
@@ -3277,6 +3386,8 @@ button {
   .info-table .user-data {
     align-items: center;
     justify-content: center;
+    -ms-grid-column: 1 !important;
+    -ms-grid-column-span: 3 !important;
     grid-column: 1/4 !important;
     border: 1px solid #E1EAED !important;
   }
@@ -3465,3 +3576,5 @@ button {
     padding-left: 10px;
   }
 }
+
+.webp .calendar-link::after { background-image: url(../img/calendar-ico.webp); }

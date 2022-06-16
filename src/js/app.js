@@ -148,11 +148,6 @@ const slider = new Swiper('.widget-template__slider', {
     slidesPerView: "auto",
     spaceBetween: 5,
     allowTouchMove: true,
-    breakpoints: {
-        576: {
-            allowTouchMove: false,
-        }
-    },
     observeParents: true,
     navigation: {
         nextEl: '.swiper-button-next',
