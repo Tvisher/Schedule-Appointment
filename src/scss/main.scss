@@ -621,6 +621,8 @@ li {
     }
 
     li {
+      max-width: 98px;
+      width: 100%;
       flex: 0 0 20%;
       border-radius: 4px;
       padding: 4px 3px;
@@ -897,6 +899,7 @@ li {
 
 .render-container-wrapper {
   position: relative;
+  min-height: 177px;
 }
 
 .preloader-spin {
@@ -926,6 +929,7 @@ li {
 
   .widget-template__shedule .shedule__block {
     flex: 0 0 100%;
+    width: 100%;
   }
 
   .location {
