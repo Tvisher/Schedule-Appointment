@@ -1268,13 +1268,6 @@ li {
       border-bottom: none;
     }
 
-    .uploaded-data {
-      span:nth-of-type(2) {
-        // display: none;
-        // opacity: 0;
-      }
-    }
-
     .uploaded-data::before {
       display: none;
     }
@@ -1524,6 +1517,7 @@ li {
 }
 
 .param-elem {
+  padding: 0px 8px;
   &._error {
     .tooltip-wrapper {
       color: red;
