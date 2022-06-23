@@ -382,13 +382,11 @@ th {
 }
 
 .swiper-horizontal.swiper-css-mode > .swiper-wrapper {
-  -ms-scroll-snap-type: x mandatory;
-      scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
 }
 
 .swiper-vertical.swiper-css-mode > .swiper-wrapper {
-  -ms-scroll-snap-type: y mandatory;
-      scroll-snap-type: y mandatory;
+  scroll-snap-type: y mandatory;
 }
 
 .swiper-centered > .swiper-wrapper::before {
@@ -1083,9 +1081,7 @@ button.swiper-pagination-bullet {
 }
 
 .air-datepicker-body--day-names {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (var(--adp-day-cell-width))[7];
   grid-template-columns: repeat(7, var(--adp-day-cell-width));
   margin: 8px 0 3px;
 }
@@ -1102,24 +1098,20 @@ button.swiper-pagination-bullet {
 }
 
 .air-datepicker-body--cells {
-  display: -ms-grid;
   display: grid;
 }
 
 .air-datepicker-body--cells.-days- {
-  -ms-grid-columns: (var(--adp-day-cell-width))[7];
   grid-template-columns: repeat(7, var(--adp-day-cell-width));
   grid-auto-rows: var(--adp-day-cell-height);
 }
 
 .air-datepicker-body--cells.-months- {
-  -ms-grid-columns: (1fr)[3];
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: var(--adp-month-cell-height);
 }
 
 .air-datepicker-body--cells.-years- {
-  -ms-grid-columns: (1fr)[4];
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: var(--adp-year-cell-height);
 }
@@ -1150,8 +1142,7 @@ button.swiper-pagination-bullet {
   border-radius: var(--adp-border-radius);
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
-      user-select: none;
+  user-select: none;
 }
 
 .air-datepicker-nav--action:hover {
@@ -1202,7 +1193,6 @@ button.swiper-pagination-bullet {
 }
 
 .air-datepicker-buttons {
-  display: -ms-grid;
   display: grid;
   grid-auto-columns: 1fr;
   grid-auto-flow: column;
@@ -1243,11 +1233,8 @@ button.swiper-pagination-bullet {
 }
 
 .air-datepicker-time {
-  display: -ms-grid;
   display: grid;
   grid-template-columns: -webkit-max-content 1fr;
-  -ms-grid-columns: -webkit-max-content 1fr;
-  -ms-grid-columns: max-content 1fr;
   grid-template-columns: max-content 1fr;
   grid-column-gap: 12px;
   align-items: center;
@@ -1525,15 +1512,11 @@ button.swiper-pagination-bullet {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   border-radius: var(--adp-border-radius);
   box-sizing: content-box;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
-  -ms-grid-rows: (-webkit-max-content)[4];
   grid-template-rows: repeat(4, -webkit-max-content);
-  -ms-grid-rows: (max-content)[4];
   grid-template-rows: repeat(4, max-content);
-      grid-template-areas: var(--adp-grid-areas);
+  grid-template-areas: var(--adp-grid-areas);
   font-family: var(--adp-font-family), sans-serif;
   font-size: var(--adp-font-size);
   color: var(--adp-color);
@@ -1875,7 +1858,6 @@ button.swiper-pagination-bullet {
   /* Konqueror */
   -moz-user-select: none;
   /* Firefox */
-  -ms-user-select: none;
   /* Internet Explorer/Edge */
   user-select: none;
   /* Non-prefixed version, currently
@@ -2964,9 +2946,7 @@ button {
 .info-table {
   margin: auto;
   max-width: 729px;
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0px;
   margin-bottom: 50px;
@@ -2977,9 +2957,7 @@ button {
 }
 
 .info-table .location {
-  -ms-grid-column: 1;
-      grid-column-start: 1;
-  -ms-grid-column-span: 2;
+  grid-column-start: 1;
   grid-column-end: 3;
   margin: 0;
   border: 1px solid #E1EAED;
@@ -2990,9 +2968,7 @@ button {
 
 .info-table .location.head-info {
   display: flex;
-  -ms-grid-column: 3;
-      grid-column-start: 3;
-  -ms-grid-column-span: 0;
+  grid-column-start: 3;
   grid-column-end: 3;
   border: 1px solid #E1EAED;
   border-bottom: none;
@@ -3229,12 +3205,6 @@ button {
   color: #a6aab1;
 }
 
-[data-styles-field]:not(:-ms-input-placeholder) ~ .styles-text {
-  font-size: 12px;
-  top: 5px;
-  color: #a6aab1;
-}
-
 [data-styles-field]:not(:placeholder-shown) ~ .styles-text,
 [data-styles-field]:focus ~ .styles-text {
   font-size: 12px;
@@ -3243,7 +3213,7 @@ button {
 }
 
 .swiper-slide[data-enable=false] {
-  background: #6d6b6b;
+  background: rgb(109, 107, 107);
   opacity: 0.3;
 }
 
@@ -3280,9 +3250,9 @@ button {
   width: 100%;
   font-size: 1em;
   pointer-events: auto;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   background-clip: padding-box;
-  border: 1px solid #c2bcbc;
+  border: 1px solid rgb(194, 188, 188);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   border-radius: 6px;
   overflow: hidden;
@@ -3297,7 +3267,7 @@ button {
   width: 100%;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #e4d7d7;
+  border-bottom: 1px solid rgb(228, 215, 215);
 }
 
 .toast-container .toast-header .toast-title {
@@ -3311,7 +3281,7 @@ button {
   font-size: 14px;
   padding: 1rem;
   padding-top: 10px;
-  background-color: #fafafa;
+  background-color: rgb(250, 250, 250);
 }
 
 .toast-container .btn-close {
@@ -3394,8 +3364,6 @@ button {
   .info-table .user-data {
     align-items: center;
     justify-content: center;
-    -ms-grid-column: 1 !important;
-    -ms-grid-column-span: 3 !important;
     grid-column: 1/4 !important;
     border: 1px solid #E1EAED !important;
   }

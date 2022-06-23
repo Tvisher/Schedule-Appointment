@@ -219,7 +219,7 @@ window.updatetLibraries = function () {
     //Тултипы при наведении на иконку (!)
     tippy('[data-tippy-content]');
     // Добавление маски на номер телефона
-    const phoneMaskElem = document.querySelector('[data-phone-field]')
+    const phoneMaskElem = document.querySelector('input[type="tel"]')
     if (phoneMaskElem) {
         const iMask = IMask(phoneMaskElem, {
             mask: '(000) 000-0000',
