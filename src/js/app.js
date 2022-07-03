@@ -222,7 +222,7 @@ window.updatetLibraries = function () {
     const phoneMaskElem = document.querySelector('input[type="tel"]')
     if (phoneMaskElem) {
         const iMask = IMask(phoneMaskElem, {
-            mask: '(000) 000-0000',
+            mask: '000-000-0000',
         });
     }
 }
