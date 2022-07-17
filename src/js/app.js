@@ -157,9 +157,10 @@ const slider = new Swiper('.widget-template__slider', {
         init(swiper) {
             postData('https://client.appt-hub.com/api/get-working-day', { token: "", username: userName })
                 .then((data) => {
+                    if (!data.success) { return }
                     //Готовим даты для вывода в слайд и циклом генерируем слайды в нужном колличиестве
-                    for (let index = 0; index < data.length; index++) {
-                        const dates = data[index],
+                    for (let index = 0; index < data.items.length; index++) {
+                        const dates = data.items[index],
                             dataEnabled = dates.enable,
                             day = dates.dateFormat.day,
                             dayFull = dates.dateFormat.dayFull,
@@ -178,14 +179,16 @@ const slider = new Swiper('.widget-template__slider', {
                     }
                     //вешаем событие клика на слайды и связываем слайдер с выбором даты в календаре(генерим событие onSelect)
                     const slides = swiper.slides;
-                    slides[0].classList.add('active');
-                    slides.forEach(slide => {
-                        slide.addEventListener('click', (e) => {
-                            e.preventDefault();
-                            const dateForDatapickerUpdate = slide.dataset.slideSetDate;
-                            stepOneDatapicker.selectDate(dateForDatapickerUpdate);
-                        })
-                    });
+                    slides[0] && slides[0].classList.add('active');
+                    if (slides) {
+                        slides.forEach(slide => {
+                            slide.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const dateForDatapickerUpdate = slide.dataset.slideSetDate;
+                                stepOneDatapicker.selectDate(dateForDatapickerUpdate);
+                            })
+                        });
+                    }
                 });
         },
         slideChangeTransitionEnd() {
